@@ -859,7 +859,7 @@ BOOLEAN NetworkDeviceSectionCallback(
             PH_FORMAT format[4];
 
             if (context->AdapterEntry->PendingQuery)
-                PhMoveReference(&drawPanel->Title, PhCreateString(L"Pending..."));
+                PhMoveReference(&drawPanel->Title, PhCreateString(L"读取中..."));
             else
             {
                 if (context->AdapterEntry->AdapterAlias)
