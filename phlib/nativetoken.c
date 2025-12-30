@@ -1610,7 +1610,7 @@ NTSTATUS PhGetTokenProcessTrustLevelRID(
 
     if (TrustLevelString)
     {
-        static CONST PH_STRINGREF UnknownProtectionString = PH_STRINGREF_INIT(L"Unknown");
+        static CONST PH_STRINGREF UnknownProtectionString = PH_STRINGREF_INIT(L"未知");
         static CONST PH_STRINGREF ProtectionTypeString[] =
         {
             PH_STRINGREF_INIT(L"None"),

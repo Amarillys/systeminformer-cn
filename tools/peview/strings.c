@@ -1009,7 +1009,7 @@ INT_PTR CALLBACK PvStringsDlgProc(
                     skipExecutableSection = PhCreateEMenuItem(0, 4, L"Skip .text section", NULL, NULL);
                     skipHighEntropySections = PhCreateEMenuItem(0, 5, L"Skip high entropy sections", NULL, NULL);
                     minimumLength = PhCreateEMenuItem(0, 6, L"Minimum length...", NULL, NULL);
-                    refresh = PhCreateEMenuItem(0, 7, L"Refresh", NULL, NULL);
+                    refresh = PhCreateEMenuItem(0, 7, L"刷新", NULL, NULL);
 
                     menu = PhCreateEMenu();
                     PhInsertEMenuItem(menu, ansi, ULONG_MAX);

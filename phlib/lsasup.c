@@ -846,7 +846,7 @@ PCWSTR PhGetSidAccountTypeString(
         return L"Mandatory label";
     }
 
-    return L"Unknown";
+    return L"未知";
 }
 
 typedef struct _PH_CAPABILITY_ENTRY

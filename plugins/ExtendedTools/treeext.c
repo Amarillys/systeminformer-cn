@@ -104,8 +104,8 @@ VOID EtProcessTreeNewInitializing(
         { ETPRTNC_HARDFAULTSDELTA, L"Hard faults delta", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
         { ETPRTNC_PEAKTHREADS, L"Peak threads", 45, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
         { ETPRTNC_GPU, L"GPU", 45, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
-        { ETPRTNC_GPUDEDICATEDBYTES, L"GPU dedicated bytes", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
-        { ETPRTNC_GPUSHAREDBYTES, L"GPU shared bytes", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
+        { ETPRTNC_GPUDEDICATEDBYTES, L"显存", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
+        { ETPRTNC_GPUSHAREDBYTES, L"共享显存", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
         { ETPRTNC_DISKREADRATE, L"Disk read rate", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
         { ETPRTNC_DISKWRITERATE, L"Disk write rate", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
         { ETPRTNC_DISKTOTALRATE, L"Disk total rate", 70, PH_ALIGN_RIGHT, DT_RIGHT, TRUE },
@@ -1207,7 +1207,7 @@ VOID EtNetworkTreeNewMessage(
                     {
                         static CONST PH_STRINGREF strings[FirewallMaximumStatus] =
                         {
-                            PH_STRINGREF_INIT(L"Unknown"),
+                            PH_STRINGREF_INIT(L"未知"),
                             PH_STRINGREF_INIT(L"Allowed, not restricted"),
                             PH_STRINGREF_INIT(L"Allowed, restricted"),
                             PH_STRINGREF_INIT(L"Not allowed, not restricted"),

@@ -95,7 +95,7 @@ VOID ShowCheckForUpdatesDialog(
     config.lpCallbackData = (LONG_PTR)Context;
     config.cxWidth = 200;
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"System Informer - 更新工具";
 
     switch (Context->Channel)
     {

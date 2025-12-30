@@ -126,12 +126,12 @@ VOID PhShowModuleContextMenu(
         PH_PLUGIN_MENU_INFORMATION menuInfo;
 
         menu = PhCreateEMenu();
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_UNLOAD, L"&Unload\bDel", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_UNLOAD, L"卸载(&U)\bDel", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_OPENFILELOCATION, L"Open &file location\bCtrl+Enter", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_PROPERTIES, L"P&roperties", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_OPENFILELOCATION, L"打开文件位置(&f)\bCtrl+Enter", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_PROPERTIES, L"属性(&r)", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MODULE_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
         PhSetFlagsEMenuItem(menu, ID_MODULE_PROPERTIES, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);
         PhpInitializeModuleMenu(menu, ProcessItem->ProcessId, modules, numberOfModules);
         PhInsertCopyCellEMenuItem(menu, ID_MODULE_COPY, Context->ListContext.TreeNewHandle, ContextMenu->Column);

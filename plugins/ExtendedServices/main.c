@@ -179,11 +179,11 @@ VOID NTAPI ProcessMenuInitializingCallback(
                 servicesMenuItem = serviceMenuItem;
             }
 
-            PhInsertEMenuItem(serviceMenuItem, PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_GOTOSERVICE, L"&Go to service", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, startMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_START, L"Sta&rt", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, continueMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_CONTINUE, L"&Continue", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, pauseMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_PAUSE, L"&Pause", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, stopMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_STOP, L"St&op", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_GOTOSERVICE, L"跳转到对应服务(&G)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, startMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_START, L"启动(&r)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, continueMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_CONTINUE, L"继续(&C)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, pauseMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_PAUSE, L"暂停(&P)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, stopMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_STOP, L"中止(&o)", serviceItem), ULONG_MAX);
 
             // Massive copy and paste from mainwnd.c.
             // == START ==
@@ -490,11 +490,11 @@ VOID MiListSectionMenuInitializingCallback(
                 servicesMenuItem = serviceMenuItem;
             }
 
-            PhInsertEMenuItem(serviceMenuItem, PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_GOTOSERVICE, L"&Go to service", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, startMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_START, L"Sta&rt", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, continueMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_CONTINUE, L"&Continue", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, pauseMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_PAUSE, L"&Pause", serviceItem), ULONG_MAX);
-            PhInsertEMenuItem(serviceMenuItem, stopMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_STOP, L"St&op", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_GOTOSERVICE, L"跳转到服务(&G)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, startMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_START, L"运行(&r)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, continueMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_CONTINUE, L"继续(&C)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, pauseMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_PAUSE, L"暂停(&P)", serviceItem), ULONG_MAX);
+            PhInsertEMenuItem(serviceMenuItem, stopMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, ID_SERVICE_STOP, L"中止(&o)", serviceItem), ULONG_MAX);
 
             // Massive copy and paste from mainwnd.c.
             // == START ==

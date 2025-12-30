@@ -29,8 +29,8 @@ typedef struct _PH_SPECIFIC_TYPE
 
 ACCESS_ENTRIES(Standard)
 {
-    { L"Synchronize", SYNCHRONIZE, FALSE, TRUE, NULL },
-    { L"Delete", DELETE, FALSE, TRUE, NULL },
+    { L"同步", SYNCHRONIZE, FALSE, TRUE, NULL },
+    { L"删除", DELETE, FALSE, TRUE, NULL },
     { L"Read permissions", READ_CONTROL, FALSE, TRUE, L"Read control" },
     { L"Change permissions", WRITE_DAC, FALSE, TRUE, L"Write DAC" },
     { L"Take ownership", WRITE_OWNER, FALSE, TRUE, L"Write owner" }
@@ -631,11 +631,11 @@ ACCESS_ENTRIES(Rdp)
     { L"Full control", WTS_SECURITY_ALL_ACCESS, TRUE, TRUE, NULL },
     { L"Query information", WTS_SECURITY_QUERY_INFORMATION, TRUE, TRUE, NULL },
     { L"Set information", WTS_SECURITY_SET_INFORMATION, TRUE, TRUE, NULL },
-    { L"Reset", WTS_SECURITY_RESET, FALSE, TRUE, NULL },
+    { L"重置", WTS_SECURITY_RESET, FALSE, TRUE, NULL },
     { L"Virtual channels", WTS_SECURITY_VIRTUAL_CHANNELS, FALSE, TRUE, NULL },
     { L"Remote control", WTS_SECURITY_REMOTE_CONTROL, FALSE, TRUE, NULL },
     { L"Logon", WTS_SECURITY_LOGON, FALSE, TRUE, NULL },
-    { L"Logoff", WTS_SECURITY_LOGOFF, FALSE, TRUE, NULL },
+    { L"注销", WTS_SECURITY_LOGOFF, FALSE, TRUE, NULL },
     { L"Message", WTS_SECURITY_MESSAGE, FALSE, TRUE, NULL },
     { L"Connect", WTS_SECURITY_CONNECT, FALSE, TRUE, NULL },
     { L"Disconnect", WTS_SECURITY_DISCONNECT, FALSE, TRUE, NULL },

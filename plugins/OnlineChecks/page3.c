@@ -167,9 +167,9 @@ VOID ShowFileUploadProgressDialog(
     config.dwCommonButtons = TDCBF_CANCEL_BUTTON;
     config.hMainIcon = PhGetApplicationIcon(FALSE);
 
-    config.pszWindowTitle = PhaFormatString(L"Uploading %s...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
-    config.pszMainInstruction = PhaFormatString(L"Uploading %s...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
-    config.pszContent = L"Uploaded: ~ of ~ (0%)\r\nSpeed: ~ KB/s";
+    config.pszWindowTitle = PhaFormatString(L"上传 %s中...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
+    config.pszMainInstruction = PhaFormatString(L"上传 %s中...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
+    config.pszContent = L"已上传: ~ of ~ (0%)\r\n速度: ~ KB/s";
 
     config.cxWidth = 200;
     config.lpCallbackData = (LONG_PTR)Context;

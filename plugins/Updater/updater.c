@@ -1366,7 +1366,7 @@ NTSTATUS ShowUpdateDialogThread(
     // Start TaskDialog bootstrap
     config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_CAN_BE_MINIMIZED;
     config.hInstance = NtCurrentImageBase();
-    config.pszContent = L"Initializing...";
+    config.pszContent = L"初始化...";
     config.lpCallbackData = (LONG_PTR)context;
     config.pfCallback = TaskDialogBootstrapCallback;
     PhShowTaskDialog(&config, NULL, NULL, NULL);
@@ -1481,8 +1481,8 @@ VOID ShowStartupUpdateDialog(
     if (PhGetIntegerSetting(SETTING_NAME_SHOW_NOTIFICATION))
     {
         if (HR_SUCCESS(PhShowIconNotificationEx(
-            L"New version of System Informer available",
-            L"Help menu > Check for updates",
+            L"检查到有新版本",
+            L"帮助 > 检查更新",
             5000,
             NULL,
             NULL
@@ -1496,7 +1496,7 @@ VOID ShowStartupUpdateDialog(
         TASKDIALOGCONFIG config = { sizeof(TASKDIALOGCONFIG) };
         config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_CAN_BE_MINIMIZED;
         config.hInstance = NtCurrentImageBase();
-        config.pszContent = L"Initializing...";
+        config.pszContent = L"初始化...";
         config.lpCallbackData = (LONG_PTR)context;
         config.pfCallback = TaskDialogBootstrapCallback;
         PhShowTaskDialog(&config, NULL, NULL, NULL);

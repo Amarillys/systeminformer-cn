@@ -175,7 +175,7 @@ BOOLEAN ProcessTreeFilterCallback(
                 return TRUE;
             break;
         default:
-            if (PhSearchControlMatchZ(SearchMatchHandle, L"Unknown"))
+            if (PhSearchControlMatchZ(SearchMatchHandle, L"未知"))
                 return TRUE;
             break;
         }
@@ -194,7 +194,7 @@ BOOLEAN ProcessTreeFilterCallback(
                 return TRUE;
             break;
         default:
-            if (PhSearchControlMatchZ(SearchMatchHandle, L"Unknown"))
+            if (PhSearchControlMatchZ(SearchMatchHandle, L"未知"))
                 return TRUE;
             break;
         }
@@ -471,7 +471,7 @@ BOOLEAN ServiceTreeFilterCallback(
                 return TRUE;
             break;
         default:
-            if (PhSearchControlMatchZ(SearchMatchHandle, L"Unknown"))
+            if (PhSearchControlMatchZ(SearchMatchHandle, L"未知"))
                 return TRUE;
             break;
         }

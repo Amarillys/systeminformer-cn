@@ -66,7 +66,7 @@ PCWSTR EspGetServiceSidTypeString(
         ))
         return string;
     else
-        return L"Unknown";
+        return L"未知";
 }
 
 ULONG EspGetServiceSidTypeInteger(
@@ -100,7 +100,7 @@ PCWSTR EspGetServiceLaunchProtectedString(
         ))
         return string;
     else
-        return L"Unknown";
+        return L"未知";
 }
 
 ULONG EspGetServiceLaunchProtectedInteger(

@@ -493,7 +493,7 @@ VOID PhMipOnShowWindow(
 
     PhMipCreateInternalListSection(L"CPU", 0, PhMipCpuListSectionCallback);
     PhMipCreateInternalListSection(L"Commit charge", 0, PhMipCommitListSectionCallback);
-    PhMipCreateInternalListSection(L"Physical memory", 0, PhMipPhysicalListSectionCallback);
+    PhMipCreateInternalListSection(L"物理内存", 0, PhMipPhysicalListSectionCallback);
     PhMipCreateInternalListSection(L"I/O", 0, PhMipIoListSectionCallback);
 
     if (PhPluginsEnabled)
@@ -1961,13 +1961,13 @@ VOID PhMipShowListSectionContextMenu(
     // TODO: If there are multiple processes, then create submenus for each process.
     PhAddMiniProcessMenuItems(menu, ListSection->SelectedRepresentativeProcessId);
     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_GOTOPROCESS, L"&Go to process", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_GOTOPROCESS, L"跳转到进程(&G)", NULL, NULL), ULONG_MAX);
     PhSetFlagsEMenuItem(menu, ID_PROCESS_GOTOPROCESS, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);
 
     if (selectedNode->ProcessGroup->Processes->Count != 1)
     {
         if (item = PhFindEMenuItem(menu, 0, NULL, ID_PROCESS_GOTOPROCESS))
-            PhModifyEMenuItem(item, PH_EMENU_MODIFY_TEXT, 0, L"&Go to processes", NULL);
+            PhModifyEMenuItem(item, PH_EMENU_MODIFY_TEXT, 0, L"跳转到进程(&G)", NULL);
     }
 
     memset(&menuInfo, 0, sizeof(PH_MINIINFO_LIST_SECTION_MENU_INFORMATION));

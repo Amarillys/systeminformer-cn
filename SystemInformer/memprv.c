@@ -92,10 +92,10 @@ PCPH_STRINGREF PhGetMemoryStateString(
 {
     static CONST PH_STRINGREF MemoryStateString[] =
     {
-        PH_STRINGREF_INIT(L"Unknown"),
+        PH_STRINGREF_INIT(L"未知"),
         PH_STRINGREF_INIT(L"Commit"),
         PH_STRINGREF_INIT(L"Reserved"),
-        PH_STRINGREF_INIT(L"Free"),
+        PH_STRINGREF_INIT(L"空闲"),
     };
 
     if (FlagOn(State, MEM_COMMIT))
@@ -114,7 +114,7 @@ PCPH_STRINGREF PhGetMemoryTypeString(
 {
     static CONST PH_STRINGREF MemoryTypeString[] =
     {
-        PH_STRINGREF_INIT(L"Unknown"),
+        PH_STRINGREF_INIT(L"未知"),
         PH_STRINGREF_INIT(L"Private"),
         PH_STRINGREF_INIT(L"Mapped"),
         PH_STRINGREF_INIT(L"Image"),

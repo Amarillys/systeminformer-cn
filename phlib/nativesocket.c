@@ -755,17 +755,17 @@ PCWSTR PhpAfdGetSocketStateString(
     switch (SocketState)
     {
     case SocketStateInitializing:
-        return L"Initializing";
+        return L"初始化中";
     case SocketStateOpen:
-        return L"Open";
+        return L"打开中";
     case SocketStateBound:
-        return L"Bound";
+        return L"绑定中";
     case SocketStateBoundSpecific:
-        return L"Bound (specific)";
+        return L"绑定中 (特殊)";
     case SocketStateConnected:
-        return L"Connected";
+        return L"已连接";
     case SocketStateClosing:
-        return L"Closing";
+        return L"关闭中";
     default:
         return NULL;
     }

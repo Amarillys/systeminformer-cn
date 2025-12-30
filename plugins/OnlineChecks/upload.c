@@ -653,7 +653,7 @@ NTSTATUS UploadFileThreadStart(
     }
 
     {
-        PPH_STRING msg = PhFormatString(L"Uploading %s...", PhGetStringOrEmpty(context->BaseFileName));
+        PPH_STRING msg = PhFormatString(L"上传 %s中...", PhGetStringOrEmpty(context->BaseFileName));
         SendMessage(context->DialogHandle, TDM_SET_MARQUEE_PROGRESS_BAR, FALSE, 0);
         SendMessage(context->DialogHandle, TDM_UPDATE_ELEMENT_TEXT, TDE_MAIN_INSTRUCTION, (LPARAM)PhGetString(msg));
         PhDereferenceObject(msg);

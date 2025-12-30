@@ -1695,7 +1695,7 @@ BOOLEAN NTAPI PhpThreadTreeNewCallback(
                 {
                     if (threadItem->State != Waiting)
                     {
-                        static const PH_STRINGREF stringUnknown = PH_STRINGREF_INIT(L"Unknown");
+                        static const PH_STRINGREF stringUnknown = PH_STRINGREF_INIT(L"未知");
 
                         if ((ULONG)threadItem->State < MaximumThreadState)
                             PhMoveReference(&node->StateText, PhCreateString2((PPH_STRINGREF)&PhKThreadStateNames[(ULONG)threadItem->State]));

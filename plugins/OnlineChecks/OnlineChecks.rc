@@ -51,8 +51,8 @@ END
 
 IDD_OPTIONS DIALOGEX 0, 0, 313, 200
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Options"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
+CAPTION "选项"
+FONT 11, "等距更纱黑体 Slab SC", 400, 0, 0x1
 BEGIN
     CONTROL         "Enable VirusTotal scanning",IDC_ENABLE_VIRUSTOTAL,
                     "Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,7,7,101,10
@@ -71,13 +71,13 @@ END
 IDD_OPTIONSKEY DIALOGEX 0, 0, 309, 68
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Update Key"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
+FONT 11, "等距更纱黑体 Slab SC", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "Save",IDYES,198,47,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,252,47,50,14
+    DEFPUSHBUTTON   "保存",IDYES,198,47,50,14
+    PUSHBUTTON      "取消",IDCANCEL,252,47,50,14
     EDITTEXT        IDC_KEY_EDIT,7,24,295,14,ES_AUTOHSCROLL
-    LTEXT           "Paste the key below:",IDC_KEYTEXT_L,7,7,172,8
-    CONTROL         "Checkout <a href="""">How-to-generate-a-license-key</a>",IDC_HELPLINK,
+    LTEXT           "在下方输入密钥:",IDC_KEYTEXT_L,7,7,172,8
+    CONTROL         "访问 <a href="""">How-to-generate-a-license-key</a>",IDC_HELPLINK,
                     "SysLink",WS_TABSTOP,7,47,136,14
 END
 

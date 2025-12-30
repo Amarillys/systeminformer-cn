@@ -196,7 +196,7 @@ PVOID EtWaitChainContextCreate(
     return PhCreateObjectZero(sizeof(WCT_CONTEXT), EtWaitChainContextType);
 }
 
-static PH_STRINGREF WaitChainUnknownString = PH_STRINGREF_INIT(L"Unknown");
+static PH_STRINGREF WaitChainUnknownString = PH_STRINGREF_INIT(L"未知");
 
 static PH_KEY_VALUE_PAIR WaitChainObjectTypePairs[] =
 {
@@ -209,7 +209,7 @@ static PH_KEY_VALUE_PAIR WaitChainObjectTypePairs[] =
     SIP(SREF(L"ProcessWait"), WctProcessWaitType),
     SIP(SREF(L"Thread"), WctThreadType),
     SIP(SREF(L"COM Activation"), WctComActivationType),
-    SIP(SREF(L"Unknown"), WctUnknownType),
+    SIP(SREF(L"未知"), WctUnknownType),
     SIP(SREF(L"Socket I/O"), WctSocketIoType),
     SIP(SREF(L"SMB I/O"), WctSmbIoType)
 };
@@ -224,7 +224,7 @@ static PH_KEY_VALUE_PAIR WaitChainObjectStatusPairs[] =
     SIP(SREF(L"Owned"), WctStatusOwned),
     SIP(SREF(L"Not Owned"), WctStatusNotOwned),
     SIP(SREF(L"Abandoned"), WctStatusAbandoned),
-    SIP(SREF(L"Unknown"), WctStatusUnknown),
+    SIP(SREF(L"未知"), WctStatusUnknown),
     SIP(SREF(L"Error"), WctStatusError),
 };
 

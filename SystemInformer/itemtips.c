@@ -278,7 +278,7 @@ PPH_STRING PhGetProcessTooltipText(
 
         qsort(serviceList->Items, serviceList->Count, sizeof(PPH_SERVICE_ITEM), ServiceForTooltipCompare);
 
-        PhAppendStringBuilder2(&stringBuilder, L"Services:\n");
+        PhAppendStringBuilder2(&stringBuilder, L"服务:\n");
 
         // Add the services.
         for (i = 0; i < serviceList->Count; i++)

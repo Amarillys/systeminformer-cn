@@ -154,7 +154,7 @@ VOID PhShowMemoryContextMenu(
         PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MEMORY_FREE, L"&Free", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MEMORY_DECOMMIT, L"&Decommit", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MEMORY_SAVE, L"&Save...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MEMORY_SAVE, L"保存(&S)...", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_MEMORY_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
         PhSetFlagsEMenuItem(menu, ID_MEMORY_READWRITEMEMORY, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);

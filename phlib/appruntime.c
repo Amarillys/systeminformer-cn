@@ -367,7 +367,7 @@ PPH_STRING PhSystemIdentificationToString(
     __x_ABI_CWindows_CSystem_CProfile_CSystemIdentificationSource source;
     __x_ABI_CWindows_CStorage_CStreams_CIBuffer* buffer;
     PPH_STRING identifier = NULL;
-    PCWSTR string = L"Unknown";
+    PCWSTR string = L"未知";
 
     if (SUCCEEDED(__x_ABI_CWindows_CSystem_CProfile_CISystemIdentificationInfo_get_Id(IdentificationInfo, &buffer)))
     {
@@ -399,7 +399,7 @@ PPH_STRING PhSystemIdentificationToString(
 
     PhMoveReference(&identifier, PhFormatString(
         L"%s (%s)",
-        PhGetStringOrDefault(identifier, L"Unknown"),
+        PhGetStringOrDefault(identifier, L"未知"),
         string
         ));
 

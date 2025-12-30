@@ -87,16 +87,16 @@ VOID DiskDeviceUpdateTitle(
     if (Context->DiskEntry->PendingQuery)
     {
         if (Context->DiskPathLabel)
-            PhSetWindowText(Context->DiskPathLabel, L"Pending...");
+            PhSetWindowText(Context->DiskPathLabel, L"读取中...");
         if (Context->DiskNameLabel)
-            PhSetWindowText(Context->DiskNameLabel, L"Pending...");
+            PhSetWindowText(Context->DiskNameLabel, L"读取中...");
     }
     else
     {
         if (Context->DiskPathLabel)
-            PhSetWindowText(Context->DiskPathLabel, PhGetStringOrDefault(Context->DiskEntry->DiskIndexName, L"Unknown"));
+            PhSetWindowText(Context->DiskPathLabel, PhGetStringOrDefault(Context->DiskEntry->DiskIndexName, L"未知"));
         if (Context->DiskNameLabel)
-            PhSetWindowText(Context->DiskNameLabel, PhGetStringOrDefault(Context->DiskEntry->DiskName, L"Unknown"));
+            PhSetWindowText(Context->DiskNameLabel, PhGetStringOrDefault(Context->DiskEntry->DiskName, L"未知"));
     }
 }
 
@@ -561,8 +561,8 @@ INT_PTR CALLBACK DiskDeviceDialogProc(
 
             SetWindowFont(context->DiskPathLabel, context->SysinfoSection->Parameters->LargeFont, FALSE);
             SetWindowFont(context->DiskNameLabel, context->SysinfoSection->Parameters->MediumFont, FALSE);
-            PhSetWindowText(context->DiskPathLabel, PhGetStringOrDefault(context->DiskEntry->DiskIndexName, L"Unknown"));
-            PhSetWindowText(context->DiskNameLabel, PhGetStringOrDefault(context->DiskEntry->DiskName, L"Unknown"));
+            PhSetWindowText(context->DiskPathLabel, PhGetStringOrDefault(context->DiskEntry->DiskIndexName, L"未知"));
+            PhSetWindowText(context->DiskNameLabel, PhGetStringOrDefault(context->DiskEntry->DiskName, L"未知"));
 
             context->PanelWindowHandle = PhCreateDialog(PluginInstance->DllBase, MAKEINTRESOURCE(IDD_DISKDRIVE_PANEL), hwndDlg, DiskDevicePanelDialogProc, context);
             ShowWindow(context->PanelWindowHandle, SW_SHOW);
@@ -827,12 +827,12 @@ BOOLEAN DiskDeviceSectionCallback(
             PH_FORMAT format[4];
 
             if (context->DiskEntry->PendingQuery)
-                PhMoveReference(&drawPanel->Title, PhCreateString(L"Pending..."));
+                PhMoveReference(&drawPanel->Title, PhCreateString(L"读取中..."));
             else
                 PhSetReference(&drawPanel->Title, context->DiskEntry->DiskIndexName);
 
             if (!drawPanel->Title)
-                drawPanel->Title = PhCreateString(L"Unknown");
+                drawPanel->Title = PhCreateString(L"未知");
 
             // R: %s\nW: %s
             PhInitFormatS(&format[0], L"R: ");
@@ -853,7 +853,7 @@ VOID DiskDeviceSysInfoInitializing(
     _In_ _Assume_refs_(1) PDV_DISK_ENTRY DiskEntry
     )
 {
-    static CONST PH_STRINGREF text = PH_STRINGREF_INIT(L"Unknown");
+    static CONST PH_STRINGREF text = PH_STRINGREF_INIT(L"未知");
     PDV_DISK_SYSINFO_CONTEXT context;
     PH_SYSINFO_SECTION section;
 

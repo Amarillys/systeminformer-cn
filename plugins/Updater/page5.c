@@ -194,8 +194,8 @@ VOID ShowLatestVersionDialog(
     config.pfCallback = FinalTaskDialogCallbackProc;
     config.lpCallbackData = (LONG_PTR)Context;
 
-    config.pszWindowTitle = L"System Informer - Updater";
-    config.pszMainInstruction = L"You're running the latest version.";
+    config.pszWindowTitle = L"System Informer - 更新";
+    config.pszMainInstruction = L"你的System Informer的版本是最新的。";
     config.pszContent = PH_AUTO_T(PH_STRING, UpdaterGetLatestVersionText(Context))->Buffer;
 
     PhTaskDialogNavigatePage(Context->DialogHandle, &config);
@@ -216,7 +216,7 @@ VOID ShowNewerVersionDialog(
     config.pfCallback = FinalTaskDialogCallbackProc;
     config.lpCallbackData = (LONG_PTR)Context;
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"System Informer - 更新";
     config.pszMainInstruction = L"You're running a pre-release build.";
     config.pszContent = PH_AUTO_T(PH_STRING, UpdaterGetLatestVersionText(Context))->Buffer;
 
@@ -238,25 +238,25 @@ VOID ShowUpdateFailedDialog(
     config.dwCommonButtons = TDCBF_CLOSE_BUTTON | TDCBF_RETRY_BUTTON;
     config.hMainIcon = PhGetApplicationIcon(FALSE);
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"System Informer - 更新工具";
     if (Context->SwitchingChannel)
-        config.pszMainInstruction = L"Error downloading the channel.";
+        config.pszMainInstruction = L"下载频道信息出错了。";
     else
         config.pszMainInstruction = L"Error downloading the update.";
 
     if (SignatureFailed)
     {
         if (Context->SwitchingChannel)
-            config.pszContent = L"Signature check failed. Click Retry to download the channel again.";
+            config.pszContent = L"签名校验失败，请点击重试进行重新下载。";
         else
-            config.pszContent = L"Signature check failed. Click Retry to download the update again.";
+            config.pszContent = L"哈希校验失败，请点击重试进行重新下载。";
     }
     else if (HashFailed)
     {
         if (Context->SwitchingChannel)
-            config.pszContent = L"Hash check failed. Click Retry to download the channel again.";
+            config.pszContent = L"哈希校验失败，请点击重试进行重新尝试。";
         else
-            config.pszContent = L"Hash check failed. Click Retry to download the update again.";
+            config.pszContent = L"哈希校验失败，请点击重试进行重新下载。";
     }
     else
     {
@@ -277,17 +277,17 @@ VOID ShowUpdateFailedDialog(
             else
             {
                 if (Context->SwitchingChannel)
-                    config.pszContent = L"Click Retry to download the channel again.";
+                    config.pszContent = L"请点击重试进行重新下载频道信息。";
                 else
-                    config.pszContent = L"Click Retry to download the update again.";
+                    config.pszContent = L"请点击重试进行重新下载。";
             }
         }
         else
         {
             if (Context->SwitchingChannel)
-                config.pszContent = L"Click Retry to download the channel again.";
+                config.pszContent = L"请点击重试进行重新下载频道信息。";
             else
-                config.pszContent = L"Click Retry to download the update again.";
+                config.pszContent = L"请点击重试进行重新下载。";
         }
     }
 

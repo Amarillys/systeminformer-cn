@@ -784,8 +784,8 @@ INT_PTR CALLBACK GraphicsDeviceOptionsDlgProc(
             LoadGraphicsDeviceImages(context);
 
             ListView_EnableGroupView(context->ListViewHandle, TRUE);
-            PhAddListViewGroup(context->ListViewHandle, 0, L"Connected");
-            PhAddListViewGroup(context->ListViewHandle, 1, L"Disconnected");
+            PhAddListViewGroup(context->ListViewHandle, 0, L"已连接");
+            PhAddListViewGroup(context->ListViewHandle, 1, L"已断开");
 
             PhInitializeLayoutManager(&context->LayoutManager, hwndDlg);
             PhAddLayoutItem(&context->LayoutManager, context->ListViewHandle, NULL, PH_ANCHOR_ALL);

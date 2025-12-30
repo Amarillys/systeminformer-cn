@@ -602,7 +602,7 @@ static NTSTATUS NTAPI EtEnumCurrentDirectoryObjectsCallback(
         {
             entry->EtObjectType = EtObjectAlpcPort;
         }
-        else if (PhEqualStringRef2(TypeName, L"Callback", TRUE))
+        else if (PhEqualStringRef2(TypeName, L"回调", TRUE))
         {
             entry->EtObjectType = EtObjectCallback;
         }
@@ -610,11 +610,11 @@ static NTSTATUS NTAPI EtEnumCurrentDirectoryObjectsCallback(
         {
             entry->EtObjectType = EtObjectCpuPartition;
         }
-        else if (PhEqualStringRef2(TypeName, L"Device", TRUE))
+        else if (PhEqualStringRef2(TypeName, L"设备", TRUE))
         {
             entry->EtObjectType = EtObjectDevice;
         }
-        else if (PhEqualStringRef2(TypeName, L"Driver", TRUE))
+        else if (PhEqualStringRef2(TypeName, L"驱动", TRUE))
         {
             entry->EtObjectType = EtObjectDriver;
         }
@@ -642,7 +642,7 @@ static NTSTATUS NTAPI EtEnumCurrentDirectoryObjectsCallback(
         {
             entry->EtObjectType = EtObjectMutant;
         }
-        else if (PhEqualStringRef2(TypeName, L"Partition", TRUE))
+        else if (PhEqualStringRef2(TypeName, L"分区", TRUE))
         {
             entry->EtObjectType = EtObjectMemoryPartition;
         }
@@ -1146,7 +1146,7 @@ NTSTATUS EtpTargetResolverWorkThreadStart(
                         if (NT_SUCCESS(status))
                         {
                             PH_FORMAT format[4];
-                            PWSTR sectionType = L"Unknown";
+                            PWSTR sectionType = L"未知";
 
                             if (basicInfo.AllocationAttributes & SEC_COMMIT)
                                 sectionType = L"Commit";
@@ -3360,12 +3360,12 @@ INT_PTR CALLBACK WinObjDlgProc(
                     }
                     else if (entry->EtObjectType == EtObjectAlpcPort)
                     {
-                        PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_GOTOPROCESS, L"&Go to process...", NULL, NULL), ULONG_MAX);
+                        PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_GOTOPROCESS, L"跳转到进程(&G)...", NULL, NULL), ULONG_MAX);
                         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
                     }
                     else if (entry->EtObjectType == EtObjectMutant)
                     {
-                        PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_GOTOTHREAD, L"&Go to thread...", NULL, NULL), ULONG_MAX);
+                        PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_GOTOTHREAD, L"跳转到线程(&G)...", NULL, NULL), ULONG_MAX);
                         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
                     }
                     else if (
@@ -3373,7 +3373,7 @@ INT_PTR CALLBACK WinObjDlgProc(
                         entry->EtObjectType == EtObjectSection
                         )
                     {
-                        PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_OPENFILELOCATION, L"&Open file location", NULL, NULL), ULONG_MAX);
+                        PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_OPENFILELOCATION, L"打开文件位置(&O)", NULL, NULL), ULONG_MAX);
                         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
                     }
                     if (entry->EtObjectType == EtObjectSymLink && hasTarget &&
@@ -3381,16 +3381,16 @@ INT_PTR CALLBACK WinObjDlgProc(
                           targetIsDriveVolume))
                     {
                         PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_OPENFILELOCATION,
-                            targetIsDriveVolume ? L"Sh&ow drive volume" : L"&Open file location", NULL, NULL), ULONG_MAX);
+                            targetIsDriveVolume ? L"显示盘符(&o)" : L"打开文件位置(&O)", NULL, NULL), ULONG_MAX);
                         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
                     }
 
-                    PhInsertEMenuItem(menu, secMenuItem = PhCreateEMenuItem(0, IDC_SECURITY, L"&Security\bCtrl+Enter", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, secMenuItem = PhCreateEMenuItem(0, IDC_SECURITY, L"安全(&S)\bCtrl+Enter", NULL, NULL), ULONG_MAX);
                     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
                     PhInsertEMenuItem(menu, copyAddressMenuItem = PhCreateEMenuItem(0, IDC_COPYOBJECTADDRESS, L"Copy Object &Address\bCtrl+Shift+C", NULL, NULL), ULONG_MAX);
-                    PhInsertEMenuItem(menu, copyPathMenuItem = PhCreateEMenuItem(0, IDC_COPYPATH, L"Copy &Full Name\bCtrl+Alt+C", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, copyPathMenuItem = PhCreateEMenuItem(0, IDC_COPYPATH, L"复制全名(&F)\bCtrl+Alt+C", NULL, NULL), ULONG_MAX);
                     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
                     PhInsertCopyListViewEMenuItem(menu, IDC_COPY, context->ListViewHandle);
                     PhSetFlagsEMenuItem(menu, isSymlink ? IDC_OPENLINK : IDC_PROPERTIES, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);
 
@@ -3549,16 +3549,16 @@ INT_PTR CALLBACK WinObjDlgProc(
                     TreeView_SelectItem(context->TreeViewHandle, treeItem);
 
                     menu = PhCreateEMenu();
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_PROPERTIES, L"Prope&rties\bShift+Enter", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_PROPERTIES, L"属性(&r)\bShift+Enter", NULL, NULL), ULONG_MAX);
                     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_OPENHANDLES, L"&Handles\bCtrl+H", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_OPENHANDLES, L"句柄(&H)\bCtrl+H", NULL, NULL), ULONG_MAX);
                     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_SECURITY, L"&Security\bCtrl+Enter", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_SECURITY, L"安全(&S)\bCtrl+Enter", NULL, NULL), ULONG_MAX);
                     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPYOBJECTADDRESS, L"Copy Object &Address\bCtrl+Shift+C", NULL, NULL), ULONG_MAX);
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPYPATH, L"Copy &Full Name\bCtrl+Alt+C", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPYOBJECTADDRESS, L"复制对象地址(&A)\bCtrl+Shift+C", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPYPATH, L"复制全名(&F)\bCtrl+Alt+C", NULL, NULL), ULONG_MAX);
                     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+                    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
                     PhInsertCopyListViewEMenuItem(menu, IDC_COPYOBJECTADDRESS, context->ListViewHandle);
 
                     item = PhShowEMenu(

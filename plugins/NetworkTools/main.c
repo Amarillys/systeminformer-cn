@@ -60,7 +60,7 @@ VOID NTAPI ShowOptionsCallback(
     PPH_PLUGIN_OPTIONS_POINTERS optionsEntry = (PPH_PLUGIN_OPTIONS_POINTERS)Parameter;
 
     optionsEntry->CreateSection(
-        L"NetworkTools",
+        L"网络工具",
         PluginInstance->DllBase,
         MAKEINTRESOURCE(IDD_OPTIONS),
         OptionsDlgProc,
@@ -199,8 +199,8 @@ VOID NTAPI MenuItemCallback(
 
             while (PhChoiceDialog(
                 menuItem->OwnerWindow,
-                L"Ping the Hostname or IP Address",
-                L"You can use an IPv4 or IPv6 address as the target or a fully qualified domain name (FQDN) or a website URL as the target.",
+                L"检测域名或者IP地址的延迟",
+                L"您可以使用 IPv4 或 IPv6 地址作为目标，也可以使用完全限定域名 (FQDN) 或网站 URL 作为目标。",
                 NULL,
                 0,
                 NULL,
@@ -225,8 +225,8 @@ VOID NTAPI MenuItemCallback(
 
             while (PhChoiceDialog(
                 menuItem->OwnerWindow,
-                L"Tracert the Hostname or IP Address",
-                L"You can use an IPv4 or IPv6 address as the target or a fully qualified domain name (FQDN) or a website URL as the target.",
+                L"对域名或者IP进行路由跟踪",
+                L"您可以使用 IPv4 或 IPv6 地址作为目标，也可以使用完全限定域名 (FQDN) 或网站 URL 作为目标。",
                 NULL,
                 0,
                 NULL,
@@ -251,8 +251,8 @@ VOID NTAPI MenuItemCallback(
 
             while (PhChoiceDialog(
                 menuItem->OwnerWindow,
-                L"Whois the Hostname or IP Address",
-                L"You can use an IPv4 or IPv6 address as the target or a fully qualified domain name (FQDN) or a website URL as the target.",
+                L"对域名或者IP进行Whois查询",
+                L"您可以使用 IPv4 或 IPv6 地址作为目标，也可以使用完全限定域名 (FQDN) 或网站 URL 作为目标。",
                 NULL,
                 0,
                 NULL,
@@ -288,12 +288,12 @@ VOID NTAPI MainMenuInitializingCallback(
     if (menuInfo->u.MainMenu.SubMenuIndex != PH_MENU_ITEM_LOCATION_TOOLS)
         return;
 
-    networkToolsMenu = PhPluginCreateEMenuItem(PluginInstance, 0, 0, L"&Network Tools", NULL);
-    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_GEOIP_UPDATE, L"&GeoLite database update...", NULL), ULONG_MAX);
+    networkToolsMenu = PhPluginCreateEMenuItem(PluginInstance, 0, 0, L"网络工具(&N)", NULL);
+    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_GEOIP_UPDATE, L"更新GeoLite数据库(&G)...", NULL), ULONG_MAX);
     PhInsertEMenuItem(networkToolsMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_PING, L"&Ping address...", NULL), ULONG_MAX);
-    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_TRACERT, L"&Traceroute address...", NULL), ULONG_MAX);
-    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_WHOIS, L"&Whois address...", NULL), ULONG_MAX);
+    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_PING, L"路由检测(&P)...", NULL), ULONG_MAX);
+    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_TRACERT, L"路由跟踪(&T)...", NULL), ULONG_MAX);
+    PhInsertEMenuItem(networkToolsMenu, PhPluginCreateEMenuItem(PluginInstance, 0, MAINMENU_ACTION_WHOIS, L"&Whois地址查询...", NULL), ULONG_MAX);
     PhInsertEMenuItem(menuInfo->Menu, networkToolsMenu, ULONG_MAX);
 }
 
@@ -314,9 +314,9 @@ VOID NTAPI NetworkMenuInitializingCallback(
     else
         networkItem = NULL;
 
-    PhInsertEMenuItem(menuInfo->Menu, pingMenu = PhPluginCreateEMenuItem(PluginInstance, 0, NETWORK_ACTION_PING, L"&Ping", networkItem), 0);
-    PhInsertEMenuItem(menuInfo->Menu, traceMenu = PhPluginCreateEMenuItem(PluginInstance, 0, NETWORK_ACTION_TRACEROUTE, L"&Traceroute", networkItem), 1);
-    PhInsertEMenuItem(menuInfo->Menu, whoisMenu = PhPluginCreateEMenuItem(PluginInstance, 0, NETWORK_ACTION_WHOIS, L"&Whois", networkItem), 2);
+    PhInsertEMenuItem(menuInfo->Menu, pingMenu = PhPluginCreateEMenuItem(PluginInstance, 0, NETWORK_ACTION_PING, L"延迟检测(&P)", networkItem), 0);
+    PhInsertEMenuItem(menuInfo->Menu, traceMenu = PhPluginCreateEMenuItem(PluginInstance, 0, NETWORK_ACTION_TRACEROUTE, L"路由跟踪(&T)", networkItem), 1);
+    PhInsertEMenuItem(menuInfo->Menu, whoisMenu = PhPluginCreateEMenuItem(PluginInstance, 0, NETWORK_ACTION_WHOIS, L"信息查询(&W)", networkItem), 2);
     PhInsertEMenuItem(menuInfo->Menu, PhCreateEMenuSeparator(), 3);
 
     if (networkItem)
@@ -427,43 +427,43 @@ VOID NTAPI NetworkTreeNewInitializingCallback(
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_REMOTE_COUNTRY, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Local service";
+    column.Text = L"本地服务";
     column.Width = 140;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_LOCAL_SERVICE, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Remote service";
+    column.Text = L"远程服务";
     column.Width = 140;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_REMOTE_SERVICE, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Total bytes in";
+    column.Text = L"总共接收字节";
     column.Width = 80;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_BYTES_IN, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Total bytes out";
+    column.Text = L"总共发送字节";
     column.Width = 80;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_BYTES_OUT, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Packet loss";
+    column.Text = L"包裹丢失";
     column.Width = 80;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_PACKETLOSS, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Jitter (ms)";
+    column.Text = L"抖动 (ms)";
     column.Width = 80;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_JITTER, NULL, NetworkServiceSortFunction);
 
     memset(&column, 0, sizeof(PH_TREENEW_COLUMN));
-    column.Text = L"Latency (ms)";
+    column.Text = L"延迟 (ms)";
     column.Width = 80;
     column.Alignment = PH_ALIGN_LEFT;
     PhPluginAddTreeNewColumn(PluginInstance, info->CmData, &column, NETWORK_COLUMN_ID_LATENCY, NULL, NetworkServiceSortFunction);

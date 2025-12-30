@@ -932,7 +932,7 @@ VOID PvpSetPeImageMachineType(
         type = PhGetMappedImageCHPEVersion(&PvMappedImage) ? L"ARM64 (ARM64X)" : L"ARM64";
         break;
     default:
-        type = L"Unknown";
+        type = L"未知";
         break;
     }
 
@@ -1285,7 +1285,7 @@ VOID PvpSetPeImageSubsystem(
         type = L"Windows Boot Application";
         break;
     default:
-        type = L"Unknown";
+        type = L"未知";
         break;
     }
 
@@ -2035,7 +2035,7 @@ INT_PTR CALLBACK PvPeGeneralDlgProc(
             PhSetListViewStyle(context->ListViewHandle, FALSE, TRUE);
             PhSetControlTheme(context->ListViewHandle, L"explorer");
             PhAddListViewColumn(context->ListViewHandle, 0, 0, 0, LVCFMT_LEFT, 150, L"Name");
-            PhAddListViewColumn(context->ListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"Value");
+            PhAddListViewColumn(context->ListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"值");
             PhSetExtendedListView(context->ListViewHandle);
             //PhLoadListViewColumnsFromSetting(L"ImageGeneralPropertiesListViewColumns", context->ListViewHandle);
             //PhLoadListViewSortColumnsFromSetting(L"ImageGeneralPropertiesListViewSort", context->ListViewHandle);

@@ -750,7 +750,7 @@ BOOLEAN EtpDiskIconMessageCallback(
         {
             PPH_NF_MSG_SHOWMINIINFOSECTION_DATA data = (PVOID)WParam;
 
-            data->SectionName = L"Disk";
+            data->SectionName = L"存储";
         }
         return TRUE;
     }
@@ -905,7 +905,7 @@ BOOLEAN EtpNetworkIconMessageCallback(
         {
             PPH_NF_MSG_SHOWMINIINFOSECTION_DATA data = (PVOID)WParam;
 
-            data->SectionName = L"Network";
+            data->SectionName = L"网络";
         }
         return TRUE;
     }
@@ -1799,7 +1799,7 @@ BOOLEAN EtpToolbarDiskHistoryGraphMessageCallback(
             {
                 if (PhGetIntegerSetting(SETTING_NAME_SHOWSYSINFOGRAPH))
                 {
-                    PhShowSystemInformationDialog(L"Disk");
+                    PhShowSystemInformationDialog(L"存储");
                 }
                 else
                 {
@@ -1954,7 +1954,7 @@ BOOLEAN EtpToolbarNetworkHistoryGraphMessageCallback(
             {
                 if (PhGetIntegerSetting(SETTING_NAME_SHOWSYSINFOGRAPH))
                 {
-                    PhShowSystemInformationDialog(L"Network");
+                    PhShowSystemInformationDialog(L"网络");
                 }
                 else
                 {
@@ -1988,7 +1988,7 @@ VOID EtRegisterToolbarGraphs(
         ToolStatusInterface->RegisterToolbarGraph(
             PluginInstance,
             5,
-            L"GPU history",
+            L"GPU记录",
             EtGpuEnabled ? 0 : TOOLSTATUS_GRAPH_UNAVAILABLE,
             NULL,
             EtpToolbarGpuHistoryGraphMessageCallback
@@ -1997,7 +1997,7 @@ VOID EtRegisterToolbarGraphs(
         ToolStatusInterface->RegisterToolbarGraph(
             PluginInstance,
             6,
-            L"NPU history",
+            L"NPU记录",
             EtNpuEnabled ? 0 : TOOLSTATUS_GRAPH_UNAVAILABLE,
             NULL,
             EtpToolbarNpuHistoryGraphMessageCallback
@@ -2006,7 +2006,7 @@ VOID EtRegisterToolbarGraphs(
         ToolStatusInterface->RegisterToolbarGraph(
             PluginInstance,
             7,
-            L"Disk history",
+            L"磁盘记录",
             EtEtwEnabled ? 0 : TOOLSTATUS_GRAPH_UNAVAILABLE,
             NULL,
             EtpToolbarDiskHistoryGraphMessageCallback
@@ -2015,7 +2015,7 @@ VOID EtRegisterToolbarGraphs(
         ToolStatusInterface->RegisterToolbarGraph(
             PluginInstance,
             8,
-            L"Network history",
+            L"网络记录",
             EtEtwEnabled ? 0 : TOOLSTATUS_GRAPH_UNAVAILABLE,
             NULL,
             EtpToolbarNetworkHistoryGraphMessageCallback

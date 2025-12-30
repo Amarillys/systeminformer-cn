@@ -298,7 +298,7 @@ ISecurityInformation *PhSecurityInformation_Create(
     if (PhIsNullOrEmptyString(info->ObjectNameString))
     {
         // Note: The ACUI dialog doesn't allow empty strings for the object name. (dmex)  
-        PhMoveReference(&info->ObjectNameString, PhCreateString(L"Unknown"));
+        PhMoveReference(&info->ObjectNameString, PhCreateString(L"未知"));
     }
 
     return (ISecurityInformation *)info;

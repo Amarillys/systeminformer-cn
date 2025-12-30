@@ -62,32 +62,32 @@ VOID ShowCheckingForUpdatesDialog(
     config.pfCallback = CheckingForUpdatesCallbackProc;
     config.lpCallbackData = (LONG_PTR)Context;
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"System Informer - 更新工具";
 
     if (Context->SwitchingChannel)
     {
         switch (Context->Channel)
         {
         case PhReleaseChannel:
-            config.pszMainInstruction = L"Checking the release channel...";
+            config.pszMainInstruction = L"检查正式版频道...";
             break;
         //case PhPreviewChannel:
         //    config.pszMainInstruction = L"Checking the preview channel...";
         //    break;
         case PhCanaryChannel:
-            config.pszMainInstruction = L"Checking the canary channel...";
+            config.pszMainInstruction = L"检查测试版频道...";
             break;
         //case PhDeveloperChannel:
         //    config.pszMainInstruction = L"Checking the developer channel...";
         //    break;
         default:
-            config.pszMainInstruction = L"Checking the channel...";
+            config.pszMainInstruction = L"检查更新频道...";
             break;
         }
     }
     else
     {
-        config.pszMainInstruction = L"Checking for an updated release...";
+        config.pszMainInstruction = L"正在检查更新...";
     }
 
     PhTaskDialogNavigatePage(Context->DialogHandle, &config);

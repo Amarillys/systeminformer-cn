@@ -167,7 +167,7 @@ VOID PhShowHandleContextMenu(
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_HANDLE_PROPERTIES, L"Prope&rties\bEnter", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_HANDLE_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_HANDLE_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
         PhSetFlagsEMenuItem(menu, ID_HANDLE_PROPERTIES, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);
         PhpInitializeHandleMenu(menu, ProcessItem->ProcessId, handles, numberOfHandles, Context);
         PhInsertCopyCellEMenuItem(menu, ID_HANDLE_COPY, Context->ListContext.TreeNewHandle, ContextMenu->Column);

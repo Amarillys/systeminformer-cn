@@ -1925,7 +1925,7 @@ VOID PhNfpPhysicalHistoryIconUpdateCallback(
     physicalUsage = PhSystemBasicInformation.NumberOfPhysicalPages - PhPerfInformation.AvailablePages;
     physicalFraction = (FLOAT)physicalUsage / (FLOAT)PhSystemBasicInformation.NumberOfPhysicalPages;
 
-    PhInitFormatS(&format[0], L"Physical memory: ");
+    PhInitFormatS(&format[0], L" 物理内存: ");
     PhInitFormatSize(&format[1], UInt32x32To64(physicalUsage, PAGE_SIZE));
     PhInitFormatS(&format[2], L" (");
     PhInitFormatF(&format[3], physicalFraction * 100, PhMaxPrecisionUnit);
@@ -2433,7 +2433,7 @@ VOID PhNfpPhysicalUsageTextIconUpdateCallback(
 
     // Text
 
-    PhInitFormatS(&format[0], L"Physical memory: ");
+    PhInitFormatS(&format[0], L"物理内存: ");
     PhInitFormatSize(&format[1], UInt32x32To64(physicalUsage, PAGE_SIZE));
     PhInitFormatS(&format[2], L" (");
     PhInitFormatF(&format[3], physicalFraction * 100.f, PhMaxPrecisionUnit);
@@ -2515,7 +2515,7 @@ BOOLEAN PhNfpGetShowMiniInfoSectionData(
             break;
         case PH_TRAY_ICON_ID_PHYSICAL_HISTORY:
         case PH_TRAY_ICON_ID_PHYSICAL_TEXT:
-            Data->SectionName = L"Physical memory";
+            Data->SectionName = L"物理内存";
             break;
         default:
             showMiniInfo = FALSE;

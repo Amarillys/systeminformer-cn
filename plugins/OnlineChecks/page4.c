@@ -49,7 +49,7 @@ VOID VirusTotalShowErrorDialog(
     config.dwCommonButtons = TDCBF_CLOSE_BUTTON;
     config.hMainIcon = PhGetApplicationIcon(FALSE);
 
-    config.pszWindowTitle = PhaFormatString(L"Uploading %s...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
+    config.pszWindowTitle = PhaFormatString(L"上传 %s中...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
     config.pszMainInstruction = PhaFormatString(L"Error uploading %s...", PhGetStringOrEmpty(Context->BaseFileName))->Buffer;
     config.pszContent = PhGetStringOrEmpty(Context->ErrorString);
 

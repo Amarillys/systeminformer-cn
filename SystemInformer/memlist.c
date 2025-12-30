@@ -917,7 +917,7 @@ BOOLEAN NTAPI PhpMemoryTreeNewCallback(
                         if (memoryItem->RegionType == UnusableRegion)
                             PhInitializeStringRef(&getCellText->Text, L"Free (Unusable)");
                         else
-                            PhInitializeStringRef(&getCellText->Text, L"Free");
+                            PhInitializeStringRef(&getCellText->Text, L"空闲");
                     }
                     else if (node->IsAllocationBase)
                     {

@@ -173,7 +173,7 @@ static PCWSTR PvVersionInfoFileOSHostToString(
     case 3:  return L"32-bit OS/2";
     case 4:  return L"Windows NT";
     case 5:  return L"Windows CE";
-    default: return L"Unknown";
+    default: return L"未知";
     }
 }
 
@@ -188,7 +188,7 @@ static PCWSTR PvVersionInfoFileOSGuestToString(
     case 2:  return L"16-bit Presentation Manager";
     case 3:  return L"32-bit Presentation Manager";
     case 4:  return L"32-bit Windows";
-    default: return L"Unknown";
+    default: return L"未知";
     }
 }
 
@@ -436,7 +436,7 @@ INT_PTR CALLBACK PvpPeVersionInfoDlgProc(
             PhSetControlTheme(context->ListViewHandle, L"explorer");
             PhAddListViewColumn(context->ListViewHandle, 0, 0, 0, LVCFMT_LEFT, 40, L"#");
             PhAddListViewColumn(context->ListViewHandle, 1, 1, 1, LVCFMT_LEFT, 200, L"Name");
-            PhAddListViewColumn(context->ListViewHandle, 2, 2, 2, LVCFMT_LEFT, 250, L"Value");
+            PhAddListViewColumn(context->ListViewHandle, 2, 2, 2, LVCFMT_LEFT, 250, L"值");
             PhSetExtendedListView(context->ListViewHandle);
             PhLoadListViewColumnsFromSetting(L"ImageVersionInfoListViewColumns", context->ListViewHandle);
             PvConfigTreeBorders(context->ListViewHandle);

@@ -552,7 +552,7 @@ VOID EspFormatTriggerInfo(
 
             if (!typeFound)
             {
-                triggerString = L"Unknown";
+                triggerString = L"未知";
             }
         }
         break;
@@ -567,7 +567,7 @@ VOID EspFormatTriggerInfo(
         actionString = L"Stop";
         break;
     default:
-        actionString = L"Unknown";
+        actionString = L"未知";
         break;
     }
 

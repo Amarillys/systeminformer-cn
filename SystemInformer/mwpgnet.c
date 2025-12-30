@@ -112,10 +112,10 @@ BOOLEAN PhMwpNetworkPageCallback(
             PPH_EMENU menu;
             PPH_EMENU_ITEM menuItem;
 
-            menu = PhCreateEMenuItem(0, 0, L"Network", NULL, NULL);
+            menu = PhCreateEMenuItem(0, 0, L"网络", NULL, NULL);
             PhInsertEMenuItem(menuInfo->Menu, menu, menuInfo->StartIndex);
 
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDEWAITINGCONNECTIONS, L"&Hide waiting connections", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDEWAITINGCONNECTIONS, L"隐藏等待中的连接(&H)", NULL, NULL), ULONG_MAX);
 
             if (NetworkFilterEntry && (menuItem = PhFindEMenuItem(menu, 0, NULL, ID_VIEW_HIDEWAITINGCONNECTIONS)))
                 menuItem->Flags |= PH_EMENU_CHECKED;
@@ -277,12 +277,12 @@ VOID PhShowNetworkContextMenu(
         PPH_EMENU_ITEM item;
 
         menu = PhCreateEMenu();
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_GOTOPROCESS, L"&Go to process\bEnter", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_GOTOSERVICE, L"Go to service", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_GOTOPROCESS, L"跳转到进程(&G)\bEnter", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_GOTOSERVICE, L"跳转到服务", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_CLOSE, L"C&lose", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_CLOSE, L"关闭(&l)", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_NETWORK_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
         PhSetFlagsEMenuItem(menu, ID_NETWORK_GOTOPROCESS, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);
         PhMwpInitializeNetworkMenu(menu, networkItems, numberOfNetworkItems);
         PhInsertCopyCellEMenuItem(menu, ID_NETWORK_COPY, PhMwpNetworkTreeNewHandle, ContextMenu->Column);

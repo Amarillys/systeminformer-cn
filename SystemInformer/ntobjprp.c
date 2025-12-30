@@ -171,8 +171,8 @@ static VOID PhpRefreshEventPageInfo(
         )))
     {
         EVENT_BASIC_INFORMATION basicInfo;
-        PWSTR eventType = L"Unknown";
-        PWSTR eventState = L"Unknown";
+        PWSTR eventType = L"未知";
+        PWSTR eventState = L"未知";
 
         if (NT_SUCCESS(PhGetEventBasicInformation(eventHandle, &basicInfo)))
         {
@@ -379,8 +379,8 @@ static VOID PhpRefreshSemaphorePageInfo(
         }
         else
         {
-            PhSetDialogItemText(hwndDlg, IDC_CURRENTCOUNT, L"Unknown");
-            PhSetDialogItemText(hwndDlg, IDC_MAXIMUMCOUNT, L"Unknown");
+            PhSetDialogItemText(hwndDlg, IDC_CURRENTCOUNT, L"未知");
+            PhSetDialogItemText(hwndDlg, IDC_MAXIMUMCOUNT, L"未知");
         }
 
         NtClose(semaphoreHandle);
@@ -493,7 +493,7 @@ static VOID PhpRefreshTimerPageInfo(
         }
         else
         {
-            PhSetDialogItemText(hwndDlg, IDC_SIGNALED, L"Unknown");
+            PhSetDialogItemText(hwndDlg, IDC_SIGNALED, L"未知");
         }
 
         NtClose(timerHandle);
@@ -646,7 +646,7 @@ VOID PhpEnumerateMappingsEntries(
         }
         else
         {
-            lvItemIndex = PhAddListViewItem(Context->ListViewHandle, MAXINT, L"Unknown", info);
+            lvItemIndex = PhAddListViewItem(Context->ListViewHandle, MAXINT, L"未知", info);
         }
 
         PhPrintPointer(value, info->StartVa);
@@ -744,7 +744,7 @@ INT_PTR CALLBACK PhpMappingsPageProc(
             menu = PhCreateEMenu();
             if (info && info->ViewMapType == VIEW_MAP_TYPE_PROCESS)
             {
-                PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 1, L"&Go to process", NULL, NULL), ULONG_MAX);
+                PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 1, L"跳转到进程(&G)", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
             }
             PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"&Copy", NULL, NULL), ULONG_MAX);

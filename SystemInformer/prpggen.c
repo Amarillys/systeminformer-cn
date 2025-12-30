@@ -55,7 +55,7 @@ PPH_STRING PhGetProcessItemProtectionText(
     {
         if (WindowsVersion >= WINDOWS_8_1)
         {
-            PWSTR type = L"Unknown";
+            PWSTR type = L"未知";
             PWSTR signer = L"";
 
             PhFindStringSiKeyValuePairs(PhProtectedTypeStrings, sizeof(PhProtectedTypeStrings), ProcessItem->Protection.Type, &type);

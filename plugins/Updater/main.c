@@ -73,7 +73,7 @@ VOID NTAPI MainMenuInitializingCallback(
     //PhInsertEMenuItem(channelMenuItem, canaryMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, UPDATE_SWITCH_CANARY, L"Canary", NULL), ULONG_MAX);
     ////PhInsertEMenuItem(channelMenuItem, developerMenuItem = PhPluginCreateEMenuItem(PluginInstance, 0, UPDATE_SWITCH_DEVELOPER, L"Developer", NULL), ULONG_MAX);
     //PhInsertEMenuItem(menuInfo->Menu, channelMenuItem, 0);
-    PhInsertEMenuItem(menuInfo->Menu, PhPluginCreateEMenuItem(PluginInstance, 0, UPDATE_MENUITEM_UPDATE, L"Check for &updates", NULL), 0);
+    PhInsertEMenuItem(menuInfo->Menu, PhPluginCreateEMenuItem(PluginInstance, 0, UPDATE_MENUITEM_UPDATE, L"检查更新(&u)", NULL), 0);
 
     //switch (PhGetPhReleaseChannel())
     //{
@@ -143,7 +143,7 @@ VOID NTAPI ShowOptionsCallback(
     PPH_PLUGIN_OPTIONS_POINTERS optionsEntry = (PPH_PLUGIN_OPTIONS_POINTERS)Parameter;
 
     optionsEntry->CreateSection(
-        L"Updater",
+        L"更新工具",
         NtCurrentImageBase(),
         MAKEINTRESOURCE(IDD_OPTIONS),
         OptionsDlgProc,

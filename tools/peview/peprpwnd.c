@@ -608,7 +608,7 @@ VOID PvAddTreeViewSections(
 
     // Properties page
     PvCreateTabSection(
-        L"Properties",
+        L"属性",
         PhInstanceHandle,
         MAKEINTRESOURCE(IDD_PEPROPSTORAGE),
         PvpPePropStoreDlgProc,
@@ -653,7 +653,7 @@ VOID PvAddTreeViewSections(
 
     // Processes page
     PvCreateTabSection(
-        L"Processes",
+        L"进程",
         PhInstanceHandle,
         MAKEINTRESOURCE(IDD_PIDS),
         PvpPeProcessesDlgProc,

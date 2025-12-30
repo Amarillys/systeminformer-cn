@@ -118,18 +118,18 @@ VOID PhInitializeProcessTreeList(
     TreeNew_SetMaxId(hwnd, PHPRTLC_MAXIMUM - 1);
 
     // Default columns
-    PhAddTreeNewColumn(hwnd, PHPRTLC_NAME, TRUE, L"Name", 200, PH_ALIGN_LEFT, (PhGetIntegerSetting(SETTING_PROCESS_TREE_LIST_NAME_DEFAULT) ? TN_COLUMN_FIXED : 0), 0); // HACK (dmex)
+    PhAddTreeNewColumn(hwnd, PHPRTLC_NAME, TRUE, L"名称", 200, PH_ALIGN_LEFT, (PhGetIntegerSetting(SETTING_PROCESS_TREE_LIST_NAME_DEFAULT) ? TN_COLUMN_FIXED : 0), 0); // HACK (dmex)
     PhAddTreeNewColumn(hwnd, PHPRTLC_PID, TRUE, L"PID", 50, PH_ALIGN_RIGHT, 0, DT_RIGHT);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_CPU, TRUE, L"CPU", 45, PH_ALIGN_RIGHT, 1, DT_RIGHT, TRUE);
-    PhAddTreeNewColumnEx(hwnd, PHPRTLC_IOTOTALRATE, TRUE, L"I/O total rate", 70, PH_ALIGN_RIGHT, 2, DT_RIGHT, TRUE);
-    PhAddTreeNewColumnEx(hwnd, PHPRTLC_PRIVATEBYTES, TRUE, L"Private bytes", 70, PH_ALIGN_RIGHT, 3, DT_RIGHT, TRUE);
-    PhAddTreeNewColumn(hwnd, PHPRTLC_USERNAME, TRUE, L"User name", 140, PH_ALIGN_LEFT, 4, DT_PATH_ELLIPSIS);
-    PhAddTreeNewColumn(hwnd, PHPRTLC_DESCRIPTION, TRUE, L"Description", 180, PH_ALIGN_LEFT, 5, 0);
+    PhAddTreeNewColumnEx(hwnd, PHPRTLC_IOTOTALRATE, TRUE, L"存储", 70, PH_ALIGN_RIGHT, 2, DT_RIGHT, TRUE);
+    PhAddTreeNewColumnEx(hwnd, PHPRTLC_PRIVATEBYTES, TRUE, L"提交内存", 70, PH_ALIGN_RIGHT, 3, DT_RIGHT, TRUE);
+    PhAddTreeNewColumn(hwnd, PHPRTLC_USERNAME, TRUE, L"用户名", 140, PH_ALIGN_LEFT, 4, DT_PATH_ELLIPSIS);
+    PhAddTreeNewColumn(hwnd, PHPRTLC_DESCRIPTION, TRUE, L"描述", 180, PH_ALIGN_LEFT, 5, 0);
 
     // Customizable columns (1)
     PhAddTreeNewColumn(hwnd, PHPRTLC_COMPANYNAME, FALSE, L"Company name", 180, PH_ALIGN_LEFT, ULONG_MAX, 0);
-    PhAddTreeNewColumn(hwnd, PHPRTLC_VERSION, FALSE, L"Version", 100, PH_ALIGN_LEFT, ULONG_MAX, 0);
-    PhAddTreeNewColumn(hwnd, PHPRTLC_FILENAME, FALSE, L"File name", 180, PH_ALIGN_LEFT, ULONG_MAX, DT_PATH_ELLIPSIS);
+    PhAddTreeNewColumn(hwnd, PHPRTLC_VERSION, FALSE, L"版本", 100, PH_ALIGN_LEFT, ULONG_MAX, 0);
+    PhAddTreeNewColumn(hwnd, PHPRTLC_FILENAME, FALSE, L"文件名", 180, PH_ALIGN_LEFT, ULONG_MAX, DT_PATH_ELLIPSIS);
     PhAddTreeNewColumn(hwnd, PHPRTLC_COMMANDLINE, FALSE, L"Command line", 180, PH_ALIGN_LEFT, ULONG_MAX, 0);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_PEAKPRIVATEBYTES, FALSE, L"Peak private bytes", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_WORKINGSET, FALSE, L"Working set", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
@@ -139,7 +139,7 @@ VOID PhInitializeProcessTreeList(
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_SHAREABLEWS, FALSE, L"Shareable WS", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_VIRTUALSIZE, FALSE, L"Virtual size", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_PEAKVIRTUALSIZE, FALSE, L"Peak virtual size", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
-    PhAddTreeNewColumnEx(hwnd, PHPRTLC_PAGEFAULTS, FALSE, L"Page faults", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
+    PhAddTreeNewColumnEx(hwnd, PHPRTLC_PAGEFAULTS, FALSE, L"页面错误", 70, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
     PhAddTreeNewColumn(hwnd, PHPRTLC_SESSIONID, FALSE, L"Session ID", 45, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_PRIORITYCLASS, FALSE, L"Priority class", 100, PH_ALIGN_LEFT, ULONG_MAX, 0, TRUE);
     PhAddTreeNewColumnEx(hwnd, PHPRTLC_BASEPRIORITY, FALSE, L"Base priority", 45, PH_ALIGN_RIGHT, ULONG_MAX, DT_RIGHT, TRUE);
@@ -4146,7 +4146,7 @@ BOOLEAN NTAPI PhpProcessTreeNewCallback(
                         PhInitializeStringRef(&getCellText->Text, L"POSIX");
                         break;
                     default:
-                        PhInitializeStringRef(&getCellText->Text, L"Unknown");
+                        PhInitializeStringRef(&getCellText->Text, L"未知");
                         break;
                     }
                 }

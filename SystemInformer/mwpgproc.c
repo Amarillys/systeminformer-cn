@@ -101,19 +101,19 @@ BOOLEAN PhMwpProcessesPageCallback(
             PPH_EMENU_ITEM menuItem;
             PPH_EMENU_ITEM columnSetMenuItem;
 
-            menu = PhCreateEMenuItem(0, 0, L"Processes", NULL, NULL);
+            menu = PhCreateEMenuItem(0, 0, L"进程", NULL, NULL);
             PhInsertEMenuItem(menuInfo->Menu, menu, menuInfo->StartIndex);
 
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_COLLAPSEALL, L"&Collapse all", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_EXPANDALL, L"&Expand all", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_COLLAPSEALL, L"全部折叠(&C)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_EXPANDALL, L"全部展开(&E)", NULL, NULL), ULONG_MAX);
             PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDEPROCESSESFROMOTHERUSERS, L"&Hide processes from other users", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDESIGNEDPROCESSES, L"Hide si&gned processes", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDEMICROSOFTPROCESSES, L"Hide &system processes", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SCROLLTONEWPROCESSES, L"Scrol&l to new processes", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SORTCHILDPROCESSES, L"Sort &child processes", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SORTROOTPROCESSES, L"Sort &root processes", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SHOWCPUBELOW001, L"Show CPU &below 0.01", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDEPROCESSESFROMOTHERUSERS, L"隐藏其他用户的进程(&H)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDESIGNEDPROCESSES, L"隐藏签名进程(&g)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_HIDEMICROSOFTPROCESSES, L"隐藏系统进程(&s)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SCROLLTONEWPROCESSES, L"滚动到最新的进程(&l)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SORTCHILDPROCESSES, L"排列子进程(&c)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SORTROOTPROCESSES, L"排列父进程(&r)", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SHOWCPUBELOW001, L"CPU使用率低于0.01%仍显示", NULL, NULL), ULONG_MAX);
 
             if (PhGetIntegerSetting(SETTING_HIDE_OTHER_USER_PROCESSES) && (menuItem = PhFindEMenuItem(menu, 0, NULL, ID_VIEW_HIDEPROCESSESFROMOTHERUSERS)))
                 menuItem->Flags |= PH_EMENU_CHECKED;
@@ -142,9 +142,9 @@ BOOLEAN PhMwpProcessesPageCallback(
             }
 
             PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-            PhInsertEMenuItem(menu, menuItem = PhCreateEMenuItem(0, ID_VIEW_ORGANIZECOLUMNSETS, L"Organi&ze column sets...", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SAVECOLUMNSET, L"Sa&ve column set...", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, columnSetMenuItem = PhCreateEMenuItem(0, 0, L"Loa&d column set", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, menuItem = PhCreateEMenuItem(0, ID_VIEW_ORGANIZECOLUMNSETS, L"管理列表栏目排版(&z)...", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_VIEW_SAVECOLUMNSET, L"保存列表栏目排版(&v)...", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, columnSetMenuItem = PhCreateEMenuItem(0, 0, L"读取列表栏目排版(&d)", NULL, NULL), ULONG_MAX);
 
             // Add column set sub menu entries.
             {
@@ -876,27 +876,27 @@ PPH_EMENU PhpCreateProcessMenu(
     PPH_EMENU_ITEM menuItem;
 
     menu = PhCreateEMenu();
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_TERMINATE, L"T&erminate\bDel", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_TERMINATETREE, L"Terminate tree\bShift+Del", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_SUSPEND, L"&Suspend", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_SUSPENDTREE, L"Suspend tree", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_RESUME, L"Res&ume", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_RESUMETREE, L"Resume tree", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_FREEZE, L"Freeze", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_THAW, L"Thaw", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_RESTART, L"Res&tart", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_TERMINATE, L"结束(&E)\bDel", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_TERMINATETREE, L"结束进程树\bShift+Del", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_SUSPEND, L"暂停(&S)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_SUSPENDTREE, L"暂停进程树", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_RESUME, L"R恢复(&u)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_RESUMETREE, L"恢复进程树", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_FREEZE, L"冻结", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_THAW, L"解冻", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_RESTART, L"重启(&t)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
 
     if (SystemProcess)
     {
         PPH_EMENU kernelMinimal;
 
-        menuItem = PhCreateEMenuItem(0, ID_PROCESS_CREATEDUMPFILE, L"Create live kernel dump fi&le", NULL, NULL);
-        PhInsertEMenuItem(menuItem, kernelMinimal = PhCreateEMenuItem(0, ID_PROCESS_DUMP_MINIMAL, L"&Minimal...", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_NORMAL, L"&Normal...", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_FULL, L"&Full...", NULL, NULL), ULONG_MAX);
+        menuItem = PhCreateEMenuItem(0, ID_PROCESS_CREATEDUMPFILE, L"创建内核快照文件(&l)", NULL, NULL);
+        PhInsertEMenuItem(menuItem, kernelMinimal = PhCreateEMenuItem(0, ID_PROCESS_DUMP_MINIMAL, L"最小(&M)...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_NORMAL, L"正常(&N)...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_FULL, L"完整(&F)...", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_CUSTOM, L"&Custom...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_CUSTOM, L"自定义(&C)...", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
 
         if (!PhGetOwnTokenAttributes().Elevated)
@@ -911,13 +911,13 @@ PPH_EMENU PhpCreateProcessMenu(
     }
     else
     {
-        menuItem = PhCreateEMenuItem(0, ID_PROCESS_CREATEDUMPFILE, L"Create dump fi&le", NULL, NULL);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_MINIMAL, L"&Minimal...", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_LIMITED, L"&Limited...", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_NORMAL, L"&Normal...", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_FULL, L"&Full...", NULL, NULL), ULONG_MAX);
+        menuItem = PhCreateEMenuItem(0, ID_PROCESS_CREATEDUMPFILE, L"创建快照文件(&l)", NULL, NULL);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_MINIMAL, L"最小(&M)...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_LIMITED, L"限制(&L)...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_NORMAL, L"正常(&N)...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_FULL, L"完整(&F)...", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_CUSTOM, L"&Custom...", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_DUMP_CUSTOM, L"自定义(&C)...", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
     }
 
@@ -925,28 +925,28 @@ PPH_EMENU PhpCreateProcessMenu(
     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
     PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_AFFINITY, L"&Affinity", NULL, NULL), ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, ID_PROCESS_PRIORITYCLASS, L"&Priority class", NULL, NULL);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_REALTIME, L"&Real time", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_HIGH, L"&High", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_ABOVENORMAL, L"&Above normal", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_NORMAL, L"&Normal", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_BELOWNORMAL, L"&Below normal", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_IDLE, L"&Idle", NULL, NULL), ULONG_MAX);
+    menuItem = PhCreateEMenuItem(0, ID_PROCESS_PRIORITYCLASS, L"对象优先级(&P)", NULL, NULL);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_REALTIME, L"实时(&R)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_HIGH, L"高(&H)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_ABOVENORMAL, L"高于正常(&A)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_NORMAL, L"正常(&N)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_BELOWNORMAL, L"低于正常(&B)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PRIORITY_IDLE, L"空闲(&I)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, ID_PROCESS_IOPRIORITY, L"&I/O priority", NULL, NULL);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_HIGH, L"&High", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_NORMAL, L"&Normal", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_LOW, L"&Low", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_VERYLOW, L"&Very low", NULL, NULL), ULONG_MAX);
+    menuItem = PhCreateEMenuItem(0, ID_PROCESS_IOPRIORITY, L"&I/O 优先级", NULL, NULL);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_HIGH, L"高(&H)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_NORMAL, L"正常(&N)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_LOW, L"低(&L)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_IOPRIORITY_VERYLOW, L"非常低(&V)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, ID_PROCESS_PAGEPRIORITY, L"Pa&ge priority", NULL, NULL);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_NORMAL, L"&Normal", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_BELOWNORMAL, L"&Below normal", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_MEDIUM, L"&Medium", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_LOW, L"&Low", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_VERYLOW, L"&Very low", NULL, NULL), ULONG_MAX);
+    menuItem = PhCreateEMenuItem(0, ID_PROCESS_PAGEPRIORITY, L"页面优先级(&g)", NULL, NULL);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_NORMAL, L"正常(&N)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_BELOWNORMAL, L"低于正常(&B)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_MEDIUM, L"中等(&M)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_LOW, L"低(&L)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PAGEPRIORITY_VERYLOW, L"非常低(&V)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
 
     menuItem = PhCreateEMenuItem(0, ID_PROCESS_MISCELLANEOUS, L"&Miscellaneous", NULL, NULL);
@@ -966,21 +966,21 @@ PPH_EMENU PhpCreateProcessMenu(
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_PROCESS_VIRTUALIZATION, L"Virtuali&zation", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, ID_PROCESS_WINDOW, L"&Window", NULL, NULL);
+    menuItem = PhCreateEMenuItem(0, ID_PROCESS_WINDOW, L"窗口(&W)", NULL, NULL);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_BRINGTOFRONT, L"Bring to &front", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_RESTORE, L"&Restore", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_MINIMIZE, L"M&inimize", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_MAXIMIZE, L"M&aximize", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_RESTORE, L"恢复(&R)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_MINIMIZE, L"最小化(&i)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_MAXIMIZE, L"最大化(&a)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_CLOSE, L"&Close", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_WINDOW_CLOSE, L"关闭(&C)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
 
     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_SEARCHONLINE, L"Search &online\bCtrl+M", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_OPENFILELOCATION, L"Open &file location\bCtrl+Enter", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_PROPERTIES, L"P&roperties\bEnter", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_SEARCHONLINE, L"在线搜索(&o)\bCtrl+M", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_OPENFILELOCATION, L"打开文件位置(&f)\bCtrl+Enter", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_PROPERTIES, L"属性(&r)\bEnter", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESS_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
 
     return menu;
 }

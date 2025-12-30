@@ -170,7 +170,7 @@ COLORREF PhThemeWindowBackgroundColor = RGB(43, 43, 43);
 COLORREF PhThemeWindowBackground2Color = RGB(65, 65, 65);
 COLORREF PhThemeWindowHighlightColor = RGB(128, 128, 128);
 COLORREF PhThemeWindowHighlight2Color = RGB(143, 143, 143);
-COLORREF PhThemeWindowTextColor = RGB(255, 255, 255);
+COLORREF PhThemeWindowTextColor = RGB(233, 233, 233);
 
 VOID PhInitializeWindowTheme(
     _In_ HWND WindowHandle,

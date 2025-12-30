@@ -200,8 +200,8 @@ static VOID PhpOptionsShowHideTreeViewItem(
     _In_ BOOLEAN Hide
     )
 {
-    static CONST PH_STRINGREF generalName = PH_STRINGREF_INIT(L"General");
-    static CONST PH_STRINGREF advancedName = PH_STRINGREF_INIT(L"Advanced");
+    static CONST PH_STRINGREF generalName = PH_STRINGREF_INIT(L"常规");
+    static CONST PH_STRINGREF advancedName = PH_STRINGREF_INIT(L"高级");
 
     if (Hide)
     {
@@ -332,11 +332,11 @@ INT_PTR CALLBACK PhOptionsDialogProc(
                 SectionList = PhCreateList(8);
                 CurrentSection = NULL;
 
-                section = PhOptionsCreateSection(L"General", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTGENERAL), PhpOptionsGeneralDlgProc, NULL);
-                PhOptionsCreateSectionAdvanced(L"Advanced", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTADVANCED), PhpOptionsAdvancedDlgProc, NULL);
-                PhOptionsCreateSection(L"Highlighting", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTHIGHLIGHTING), PhpOptionsHighlightingDlgProc, NULL);
-                PhOptionsCreateSection(L"Graphs", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTGRAPHS), PhpOptionsGraphsDlgProc, NULL);
-                PhOptionsCreateSection(L"Plugins", PhInstanceHandle, MAKEINTRESOURCE(IDD_PLUGINS), PhPluginsDlgProc, NULL);
+                section = PhOptionsCreateSection(L"常规", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTGENERAL), PhpOptionsGeneralDlgProc, NULL);
+                PhOptionsCreateSectionAdvanced(L"高级", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTADVANCED), PhpOptionsAdvancedDlgProc, NULL);
+                PhOptionsCreateSection(L"高亮", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTHIGHLIGHTING), PhpOptionsHighlightingDlgProc, NULL);
+                PhOptionsCreateSection(L"图像", PhInstanceHandle, MAKEINTRESOURCE(IDD_OPTGRAPHS), PhpOptionsGraphsDlgProc, NULL);
+                PhOptionsCreateSection(L"插件", PhInstanceHandle, MAKEINTRESOURCE(IDD_PLUGINS), PhPluginsDlgProc, NULL);
 
                 if (PhPluginsEnabled)
                 {
@@ -454,7 +454,7 @@ INT_PTR CALLBACK PhOptionsDialogProc(
                         hwndDlg,
                         TD_YES_BUTTON | TD_NO_BUTTON,
                         TD_INFORMATION_ICON,
-                        L"Do you want to clean up unused settings?",
+                        L"请问是否要清理未使用的设置？",
                         L""
                         ) == IDYES)
                     {
@@ -1390,13 +1390,13 @@ VOID PhpRefreshTaskManagerState(
 
     if (PhpIsDefaultTaskManager())
     {
-        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"System Informer is the default Task Manager:");
+        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"System Informer 是默认的任务管理器:");
         PhSetWindowText(GetDlgItem(WindowHandle, IDC_REPLACETASKMANAGER), L"Restore default...");
     }
     else
     {
-        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"System Informer is not the default Task Manager:");
-        PhSetWindowText(GetDlgItem(WindowHandle, IDC_REPLACETASKMANAGER), L"Make default...");
+        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"System Informer 不是默认的任务管理器:");
+        PhSetWindowText(GetDlgItem(WindowHandle, IDC_REPLACETASKMANAGER), L"设置为默认...");
     }
 }
 
@@ -1451,37 +1451,37 @@ static VOID PhpAdvancedPageLoad(
 
     if (!ReloadOnly)
     {
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_SINGLE_INSTANCE, L"Allow only one instance", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_HIDE_WHENCLOSED, L"Hide when closed", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_HIDE_WHENMINIMIZED, L"Hide when minimized", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_START_ATLOGON, L"Start when I log on", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_START_HIDDEN, L"Start hidden", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_WARNINGS, L"Enable warnings", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_DRIVER, L"Enable kernel-mode driver", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_MONOSPACE, L"Enable monospace fonts", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_PLUGINS, L"Enable plugins", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_UNDECORATE_SYMBOLS, L"Enable undecorated symbols", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_AVX_EXTENSIONS, L"Enable AVX extensions (experimental)", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_COLUMN_HEADER_TOTALS, L"Enable column header totals (experimental)", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_CYCLE_CPU_USAGE, L"Enable cycle-based CPU usage", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_GRAPH_SCALING, L"Enable fixed graph scaling (experimental)", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_MINIINFO_WINDOW, L"Enable tray information window", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_MEMSTRINGS_TREE, L"Enable new memory strings dialog", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_LASTTAB_SUPPORT, L"Remember last selected window", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_THEME_SUPPORT, L"Enable theme support (experimental)", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_START_ASADMIN, L"Enable start as admin (experimental)", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_STREAM_MODE, L"Enable streamer mode (disable window capture) (experimental)", NULL);
-        //PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_LINUX_SUPPORT, L"Enable Windows subsystem for Linux support", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_NETWORK_RESOLVE, L"Resolve network addresses", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_NETWORK_RESOLVE_DOH, L"Resolve DNS over HTTPS (DoH)", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_INSTANT_TOOLTIPS, L"Show tooltips instantly", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_IMAGE_COHERENCY, L"Check images for coherency", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_STAGE2, L"Check images for digital signatures", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_SERVICE_STAGE2, L"Check services for digital signatures", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ICON_SINGLE_CLICK, L"Single-click tray icons", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ICON_TOGGLE_VISIBILITY, L"Icon click toggles visibility", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_PROPAGATE_CPU_USAGE, L"Include usage of collapsed processes", NULL);
-        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_SHOW_ADVANCED_OPTIONS, L"Show advanced options", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_SINGLE_INSTANCE, L"最多只运行一个", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_HIDE_WHENCLOSED, L"关闭窗口后隐藏", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_HIDE_WHENMINIMIZED, L"最小化时隐藏", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_START_ATLOGON, L"登录后自启", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_START_HIDDEN, L"启动时最小化", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_WARNINGS, L"开启警告", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_DRIVER, L"启用内核驱动", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_MONOSPACE, L"启用等宽字体", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_PLUGINS, L"启用插件", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_UNDECORATE_SYMBOLS, L"允许未修饰的符号", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_AVX_EXTENSIONS, L"启用AVX拓展(试验)", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_COLUMN_HEADER_TOTALS, L"启用列标题总计(试验)", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_CYCLE_CPU_USAGE, L"启用基于周期的 CPU 使用率(试验)", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_GRAPH_SCALING, L"启用固定图形缩放 (试验)", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_MINIINFO_WINDOW, L"启用托盘信息窗口", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_MEMSTRINGS_TREE, L"使用新的内存字符串对话框", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_LASTTAB_SUPPORT, L"记住上次选择的窗口", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_THEME_SUPPORT, L"启用主题 (试验)", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_START_ASADMIN, L"启用管理员启动 (试验)", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_STREAM_MODE, L"启用流式模式 (关闭窗口截图) (试验)", NULL);
+        //PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_LINUX_SUPPORT, L"启用WSL子系统", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_NETWORK_RESOLVE, L"解析网络地址", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_NETWORK_RESOLVE_DOH, L"使用DOH处理DNS", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_INSTANT_TOOLTIPS, L"立即显示提示", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_IMAGE_COHERENCY, L"检查镜像的完整性", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_STAGE2, L"检查镜像的数字签名", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ENABLE_SERVICE_STAGE2, L"检查服务的数字签名", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ICON_SINGLE_CLICK, L"托盘图标单击触发", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_ICON_TOGGLE_VISIBILITY, L"单击图标可切换可见性", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_PROPAGATE_CPU_USAGE, L"使用率统计包括折叠进程", NULL);
+        PhAddListViewItem(listViewHandle, PHP_OPTIONS_INDEX_SHOW_ADVANCED_OPTIONS, L"显示高级选项", NULL);
     }
 
     SetLvItemCheckForSetting(listViewHandle, PHP_OPTIONS_INDEX_SINGLE_INSTANCE, SETTING_ALLOW_ONLY_ONE_INSTANCE);
@@ -1541,8 +1541,8 @@ static VOID PhpOptionsNotifyChangeCallback(
             PhMainWndHandle,
             TD_YES_BUTTON | TD_NO_BUTTON,
             TD_INFORMATION_ICON,
-            L"One or more options you have changed requires a restart of System Informer.",
-            L"Do you want to restart System Informer now?"
+            L"修改的选项需要重启程序才能生效。",
+            L"你想要现在就重启System Informer吗?"
             ) == IDYES)
         {
             SystemInformer_PrepareForEarlyShutdown();
@@ -1575,8 +1575,8 @@ VOID PhShowOptionsRestartRequired(
         PhMainWndHandle,
         TD_YES_BUTTON | TD_NO_BUTTON,
         TD_INFORMATION_ICON,
-        L"One or more options you have changed requires a restart of System Informer.",
-        L"Do you want to restart System Informer now?"
+        L"修改的选项需要重启程序才能生效。",
+        L"你想要现在就重启System Informer吗?"
         ) == IDYES)
     {
         SystemInformer_PrepareForEarlyShutdown();
@@ -1623,8 +1623,8 @@ BOOLEAN PhShowOptionsDefaultInstallLocation(
                         ParentWindowHandle,
                         TD_YES_BUTTON | TD_NO_BUTTON,
                         TD_WARNING_ICON,
-                        L"WARNING: You have not installed System Informer into a secure location.",
-                        L"%s is not recommended when running System Informer from outside a secure location (e.g. Program Files).\r\n\r\nAre you sure you want to continue?",
+                        L"警告: System Informer被安装在不安全的地方。",
+                        L"%s 路径不安全，不推荐在安全的路径(比如 Program Files )之外运行 System Informer.\r\n\r\n确定要继续吗?",
                         Message
                         ) == IDNO)
                     {
@@ -2882,7 +2882,7 @@ VOID InitializeOptionsAdvancedTree(
 
     PhAddTreeNewColumnEx(Context->TreeNewHandle, PH_OPTIONS_ADVANCED_COLUMN_ITEM_NAME, TRUE, L"Name", 200, PH_ALIGN_LEFT, 0, 0, TRUE);
     PhAddTreeNewColumnEx(Context->TreeNewHandle, PH_OPTIONS_ADVANCED_COLUMN_ITEM_TYPE, TRUE, L"Type", 100, PH_ALIGN_LEFT, 1, 0, TRUE);
-    PhAddTreeNewColumnEx(Context->TreeNewHandle, PH_OPTIONS_ADVANCED_COLUMN_ITEM_VALUE, TRUE, L"Value", 200, PH_ALIGN_LEFT, 2, 0, TRUE);
+    PhAddTreeNewColumnEx(Context->TreeNewHandle, PH_OPTIONS_ADVANCED_COLUMN_ITEM_VALUE, TRUE, L"值", 200, PH_ALIGN_LEFT, 2, 0, TRUE);
     PhAddTreeNewColumnEx(Context->TreeNewHandle, PH_OPTIONS_ADVANCED_COLUMN_ITEM_DEFAULT, TRUE, L"Default", 200, PH_ALIGN_LEFT, 3, 0, TRUE);
 
     PhInitializeTreeNewFilterSupport(&Context->TreeFilterSupport, Context->TreeNewHandle, Context->NodeList);
@@ -3669,10 +3669,10 @@ static COLOR_ITEM PhpOptionsGraphColorItems[] =
     COLOR_ITEM(SETTING_COLOR_IO_READ_OTHER, L"I/O R+O", L"I/O R+O"),
     COLOR_ITEM(SETTING_COLOR_IO_WRITE, L"I/O W", L"I/O W"),
     COLOR_ITEM(SETTING_COLOR_PRIVATE, L"Private bytes", L"Private bytes"),
-    COLOR_ITEM(SETTING_COLOR_PHYSICAL, L"Physical memory", L"Physical memory"),
+    COLOR_ITEM(SETTING_COLOR_PHYSICAL, L"物理内存", L"物理内存"),
     COLOR_ITEM(SETTING_COLOR_POWER_USAGE, L"Power usage", L"Power usage"),
-    COLOR_ITEM(SETTING_COLOR_TEMPERATURE, L"Temperature", L"Temperature"),
-    COLOR_ITEM(SETTING_COLOR_FAN_RPM, L"Fan RPM", L"Fan RPM"),
+    COLOR_ITEM(SETTING_COLOR_TEMPERATURE, L"温度", L"温度"),
+    COLOR_ITEM(SETTING_COLOR_FAN_RPM, L"风扇转速", L"风扇转速"),
 };
 static HWND PhpGraphListViewHandle = NULL;
 

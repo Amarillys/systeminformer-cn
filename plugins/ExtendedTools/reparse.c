@@ -1155,13 +1155,13 @@ INT_PTR CALLBACK EtReparseDlgProc(
             switch (context->MenuItemIndex)
             {
             case ID_REPARSE_POINTS:
-                PhSetWindowText(hwndDlg, L"NTFS Reparse Points");
+                PhSetWindowText(hwndDlg, L"NTFS解析点");
                 break;
             case ID_REPARSE_OBJID:
-                PhSetWindowText(hwndDlg, L"NTFS Object Identifiers");
+                PhSetWindowText(hwndDlg, L"NTFS对象鉴定其 Identifiers");
                 break;
             case ID_REPARSE_SDDL:
-                PhSetWindowText(hwndDlg, L"NTFS Security Descriptors");
+                PhSetWindowText(hwndDlg, L"NTFS安全描述符");
                 break;
             }
 

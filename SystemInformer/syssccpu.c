@@ -1067,7 +1067,7 @@ VOID PhSipUpdateCpuPanel(
 #endif
     PH_FORMAT format[6];
     WCHAR formatBuffer[256];
-    WCHAR uptimeString[PH_TIMESPAN_STR_LEN_1] = { L"Unknown" };
+    WCHAR uptimeString[PH_TIMESPAN_STR_LEN_1] = { L"未知" };
 
     // Hardware
 

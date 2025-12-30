@@ -4376,7 +4376,7 @@ PPH_PROCESS_ITEM PhCreateProcessItemFromHandle(
     if (processItem->FileName)
         processItem->ProcessName = PhGetBaseName(processItem->FileName);
     else
-        processItem->ProcessName = PhCreateString(L"Unknown");
+        processItem->ProcessName = PhCreateString(L"未知");
 
     // Basic process information and not-so-dynamic information.
 

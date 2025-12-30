@@ -656,7 +656,7 @@ EXTERN_C HRESULT PvGetClrImageImports(
         PPV_CLR_IMAGE_IMPORT_DLL importDll;
 
         importDll = static_cast<PPV_CLR_IMAGE_IMPORT_DLL>(PhAllocateZero(sizeof(PV_CLR_IMAGE_IMPORT_DLL)));
-        importDll->ImportName = PhCreateString(L"Unknown");
+        importDll->ImportName = PhCreateString(L"未知");
         importDll->ImportToken = ULONG_MAX;
 
         PhAddItemList(clrImportsList, importDll);
@@ -723,7 +723,7 @@ EXTERN_C HRESULT PvGetClrImageImports(
                     if (!importDll->Functions)
                         importDll->Functions = PhCreateList(1);
                     if (!importName)
-                        importName = "Unknown";
+                        importName = "未知";
 
                     if (importDll->Functions)
                     {
@@ -749,7 +749,7 @@ EXTERN_C HRESULT PvGetClrImageImports(
                 if (!unknownImportDll->Functions)
                     unknownImportDll->Functions = PhCreateList(1);
                 if (!importName)
-                    importName = "Unknown";
+                    importName = "未知";
 
                 if (unknownImportDll->Functions)
                 {

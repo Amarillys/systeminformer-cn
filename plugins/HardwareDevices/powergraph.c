@@ -708,7 +708,7 @@ INT_PTR CALLBACK RaplDeviceDialogProc(
 
             SetWindowFont(GetDlgItem(hwndDlg, IDC_TITLE), context->SysinfoSection->Parameters->LargeFont, FALSE);
             SetWindowFont(GetDlgItem(hwndDlg, IDC_DEVICENAME), context->SysinfoSection->Parameters->MediumFont, FALSE);
-            PhSetDialogItemText(hwndDlg, IDC_DEVICENAME, PhGetStringOrDefault(context->DeviceEntry->DeviceName, L"Unknown"));
+            PhSetDialogItemText(hwndDlg, IDC_DEVICENAME, PhGetStringOrDefault(context->DeviceEntry->DeviceName, L"未知"));
 
             context->RaplDevicePanel = PhCreateDialog(PluginInstance->DllBase, MAKEINTRESOURCE(IDD_RAPLDEVICE_PANEL), hwndDlg, RaplDevicePanelDialogProc, context);
             ShowWindow(context->RaplDevicePanel, SW_SHOW);

@@ -175,7 +175,7 @@ VOID ShowUpdatePageDialog(
     config.cxWidth = 200;
     config.pszWindowTitle = PhApplicationName;
     config.pszMainInstruction = PhaFormatString(
-        L"Updating to version %lu.%lu.%lu.%lu...",
+        L"更新到版本 %lu.%lu.%lu.%lu...",
         PHAPP_VERSION_MAJOR,
         PHAPP_VERSION_MINOR,
         PHAPP_VERSION_BUILD,
@@ -202,8 +202,8 @@ VOID ShowUpdateCompletedPageDialog(
 
     config.cxWidth = 200;
     config.pszWindowTitle = PhApplicationName;
-    config.pszMainInstruction = L"Update complete.";
-    config.pszContent = L"Select Close to exit.";
+    config.pszMainInstruction = L"更新完成。";
+    config.pszContent = L"点击关闭退出。";
 
     PhTaskDialogNavigatePage(Context->DialogHandle, &config);
 }
@@ -214,8 +214,8 @@ VOID ShowUpdateErrorPageDialog(
 {
     static TASKDIALOG_BUTTON TaskDialogButtonArray[] =
     {
-        { IDYES, L"Retry" },
-        { IDCLOSE, L"Close" },
+        { IDYES, L"重试" },
+        { IDCLOSE, L"关闭" },
     };
     TASKDIALOGCONFIG config;
 
@@ -230,7 +230,7 @@ VOID ShowUpdateErrorPageDialog(
     config.cButtons = ARRAYSIZE(TaskDialogButtonArray);
     config.cxWidth = 200;
     config.pszWindowTitle = PhApplicationName;
-    config.pszMainInstruction = L"Error updating to the latest version.";
+    config.pszMainInstruction = L"更新到新版本出错了。";
 
     if (Context->LastStatus)
     {

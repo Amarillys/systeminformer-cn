@@ -94,7 +94,7 @@ VOID PvAddMappingsEntry(
     }
     else
     {
-        lvItemIndex = PhAddListViewItem(ListViewHandle, MAXINT, L"Unknown", NULL);
+        lvItemIndex = PhAddListViewItem(ListViewHandle, MAXINT, L"未知", NULL);
     }
 
     PhSetListViewSubItem(ListViewHandle, lvItemIndex, 1, Type);

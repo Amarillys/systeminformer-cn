@@ -587,15 +587,15 @@ VOID PhMwpInitializeControls(
 
     PageList = PhCreateList(10);
 
-    PhMwpCreateInternalPage(L"Processes", 0, PhMwpProcessesPageCallback);
+    PhMwpCreateInternalPage(L"进程", 0, PhMwpProcessesPageCallback);
     PhProcessTreeListInitialization();
     PhInitializeProcessTreeList(PhMwpProcessTreeNewHandle);
 
-    PhMwpCreateInternalPage(L"Services", 0, PhMwpServicesPageCallback);
+    PhMwpCreateInternalPage(L"服务", 0, PhMwpServicesPageCallback);
     PhServiceTreeListInitialization();
     PhInitializeServiceTreeList(PhMwpServiceTreeNewHandle);
 
-    PhMwpCreateInternalPage(L"Network", 0, PhMwpNetworkPageCallback);
+    PhMwpCreateInternalPage(L"网络", 0, PhMwpNetworkPageCallback);
     PhNetworkTreeListInitialization();
     PhInitializeNetworkTreeList(PhMwpNetworkTreeNewHandle);
 
@@ -1321,6 +1321,12 @@ VOID PhMwpOnCommand(
             opacity = PH_ID_TO_OPACITY(Id);
             PhSetIntegerSetting(SETTING_MAIN_WINDOW_OPACITY, opacity);
             PhSetWindowOpacity(WindowHandle, opacity);
+        }
+        break;
+    case ID_OPACITY_95:
+        {
+            PhSetIntegerSetting(L"MainWindowOpacity", 5);
+            PhSetWindowOpacity(WindowHandle, 5);
         }
         break;
     case ID_VIEW_REFRESH:
@@ -3412,39 +3418,39 @@ PPH_EMENU PhpCreateComputerMenu(
 {
     PPH_EMENU_ITEM menuItem;
 
-    menuItem = PhCreateEMenuItem(0, 0, L"&Computer", NULL, NULL);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_LOCK, L"&Lock", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_LOGOFF, L"Log o&ff", NULL, NULL), ULONG_MAX);
+    menuItem = PhCreateEMenuItem(0, 0, L"计算机(&C)", NULL, NULL);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_LOCK, L"锁定(&L)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_LOGOFF, L"注销(&F)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SLEEP, L"&Sleep", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_HIBERNATE, L"&Hibernate", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SLEEP, L"睡眠(&S)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_HIBERNATE, L"休眠(&H)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART_UPDATE, L"Update and restart", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN_UPDATE, L"Update and shut down", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART_UPDATE, L"更新并重启", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN_UPDATE, L"更新并关机", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART, L"R&estart", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(PhGetOwnTokenAttributes().Elevated ? 0 : PH_EMENU_DISABLED, ID_COMPUTER_RESTARTADVOPTIONS, L"Restart to advanced options", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTARTBOOTOPTIONS, L"Restart to boot options", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(PhGetOwnTokenAttributes().Elevated ? 0 : PH_EMENU_DISABLED, ID_COMPUTER_RESTARTFWOPTIONS, L"Restart to firmware options", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART, L"重启(&e)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(PhGetOwnTokenAttributes().Elevated ? 0 : PH_EMENU_DISABLED, ID_COMPUTER_RESTARTADVOPTIONS, L"重启到高级选项界面", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTARTBOOTOPTIONS, L"重启至启动设置", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(PhGetOwnTokenAttributes().Elevated ? 0 : PH_EMENU_DISABLED, ID_COMPUTER_RESTARTFWOPTIONS, L"重启到固件设置", NULL, NULL), ULONG_MAX);
     if (PhGetIntegerSetting(SETTING_ENABLE_SHUTDOWN_BOOT_MENU))
     {
         PVOID bootApplicationMenu = PhUiCreateComputerBootDeviceMenu(DelayLoadMenu);
         if (WindowsVersion >= WINDOWS_10 && PhGetOwnTokenAttributes().Elevated)
-            PhInsertEMenuItem(bootApplicationMenu, PhCreateEMenuItem(0, ID_COMPUTER_RESTARTWDOSCAN, L"Windows Defender Offline Scan", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(bootApplicationMenu, PhCreateEMenuItem(0, ID_COMPUTER_RESTARTWDOSCAN, L"Windows Defender 离线扫描", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menuItem, bootApplicationMenu, ULONG_MAX);
         PhInsertEMenuItem(menuItem, PhUiCreateComputerFirmwareDeviceMenu(DelayLoadMenu), ULONG_MAX);
     }
     PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN, L"Shu&t down", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWNHYBRID, L"H&ybrid shut down", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN, L"关机(&t)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWNHYBRID, L"混合关机(&y)", NULL, NULL), ULONG_MAX);
     if (PhGetIntegerSetting(SETTING_ENABLE_SHUTDOWN_CRITICAL_MENU))
     {
         PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART_NATIVE, L"R&estart (Native)", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN_NATIVE, L"Shu&t down (Native)", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART_NATIVE, L"重启(&E) (默认)", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN_NATIVE, L"关机(&T) (默认)", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menuItem, PhCreateEMenuSeparator(), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART_CRITICAL, L"R&estart (Critical)", NULL, NULL), ULONG_MAX);
-        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN_CRITICAL, L"Shu&t down (Critical)", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_RESTART_CRITICAL, L"重启(&E) (强制)", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_COMPUTER_SHUTDOWN_CRITICAL, L"关机(&T) (强制)", NULL, NULL), ULONG_MAX);
     }
 
     return menuItem;
@@ -3462,17 +3468,17 @@ PPH_EMENU PhpCreateSystemMenu(
     _In_ BOOLEAN DelayLoadMenu
     )
 {
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_RUN, L"&Run...\bCtrl+R", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_RUNAS, L"Run &as...\bCtrl+Shift+R", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_RUNASPACKAGE, L"Run as &package...\bCtrl+Shift+P", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_SHOWDETAILSFORALLPROCESSES, L"Show &details for all processes", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_RUN, L"运行(&R)...\bCtrl+R", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_RUNAS, L"高级运行(&A)...\bCtrl+Shift+R", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_RUNASPACKAGE, L"运行Appx应用(&P)...\bCtrl+Shift+P", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_SHOWDETAILSFORALLPROCESSES, L"展示进程详情(&D)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(HackerMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_SAVE, L"&Save...\bCtrl+S", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_FINDHANDLESORDLLS, L"&Find handles or DLLs...\bCtrl+F", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_OPTIONS, L"&Options...", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_SAVE, L"保存(&S)...\bCtrl+S", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_FINDHANDLESORDLLS, L"查找句柄/DLL(&F)...\bCtrl+F", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_OPTIONS, L"选项(&O)...", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(HackerMenu, PhCreateEMenuSeparator(), ULONG_MAX);
     PhInsertEMenuItem(HackerMenu, PhpCreateComputerMenu(DelayLoadMenu), ULONG_MAX);
-    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_EXIT, L"E&xit", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HackerMenu, PhCreateEMenuItem(0, ID_HACKER_EXIT, L"退出(&E)", NULL, NULL), ULONG_MAX);
 
     return HackerMenu;
 }
@@ -3489,14 +3495,14 @@ PPH_EMENU PhpCreateViewMenu(
 {
     PPH_EMENU_ITEM menuItem;
 
-    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_SYSTEMINFORMATION, L"System &information\bCtrl+I", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_TRAYICONS, L"&Tray icons", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_SYSTEMINFORMATION, L"系统信息概览(&I)\bCtrl+I", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_TRAYICONS, L"状态栏托盘图标(&T)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ViewMenu, PhCreateEMenuSeparator(), ULONG_MAX);
     PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_SECTIONPLACEHOLDER, L"<section placeholder>", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ViewMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_ALWAYSONTOP, L"&Always on top", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_ALWAYSONTOP, L"窗口指定(&A)", NULL, NULL), ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, 0, L"&Opacity", NULL, NULL);
+    menuItem = PhCreateEMenuItem(0, 0, L"透明度(&O)", NULL, NULL);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_10, L"&10%", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_20, L"&20%", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_30, L"&30%", NULL, NULL), ULONG_MAX);
@@ -3506,21 +3512,22 @@ PPH_EMENU PhpCreateViewMenu(
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_70, L"&70%", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_80, L"&80%", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_90, L"&90%", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_OPAQUE, L"&Opaque", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_95, L"&95%", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_OPACITY_OPAQUE, L"不透明(&O)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ViewMenu, menuItem, ULONG_MAX);
 
     PhInsertEMenuItem(ViewMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_REFRESH, L"&Refresh\bF5", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_REFRESH, L"刷新(&R)\bF5", NULL, NULL), ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, 0, L"Refresh i&nterval", NULL, NULL);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_FAST, L"&Fast (0.5s)", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_NORMAL, L"&Normal (1s)", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_BELOWNORMAL, L"&Below normal (2s)", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_SLOW, L"&Slow (5s)", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_VERYSLOW, L"&Very slow (10s)", NULL, NULL), ULONG_MAX);
+    menuItem = PhCreateEMenuItem(0, 0, L"刷新间隔(&I)", NULL, NULL);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_FAST, L"快(&F) (0.5s)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_NORMAL, L"普通(&N) (1s)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_BELOWNORMAL, L"稍慢(&B) (2s)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_SLOW, L"慢(&S) (5s)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_UPDATEINTERVAL_VERYSLOW, L"非常慢(&V) (10s)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ViewMenu, menuItem, ULONG_MAX);
 
-    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_UPDATEAUTOMATICALLY, L"Refresh a&utomatically\bF6", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ViewMenu, PhCreateEMenuItem(0, ID_VIEW_UPDATEAUTOMATICALLY, L"自动刷新\bF6", NULL, NULL), ULONG_MAX);
 
     return ViewMenu;
 }
@@ -3537,20 +3544,20 @@ PPH_EMENU PhpCreateToolsMenu(
 {
     PPH_EMENU_ITEM menuItem;
 
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_CREATESERVICE, L"&Create service...", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_LIVEDUMP, L"&Create live dump...", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_INSPECTEXECUTABLEFILE, L"Inspect e&xecutable file...", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_THREADSTACKS, L"&Search thread stacks", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_ZOMBIEPROCESSES, L"&Zombie processes", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_PAGEFILES, L"&Pagefiles", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_CREATESERVICE, L"创建服务...", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_LIVEDUMP, L"创建活动Dump...", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_INSPECTEXECUTABLEFILE, L"检测可执行文件(&x)...", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_THREADSTACKS, L"搜索线程堆栈(&S)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_ZOMBIEPROCESSES, L"僵尸进程(&Z)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_PAGEFILES, L"页面文件(&P)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ToolsMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_STARTTASKMANAGER, L"Start &Task Manager", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_STARTRESOURCEMONITOR, L"Start &Resource Monitor", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_STARTTASKMANAGER, L"运行Windows任务管理器(&T)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_STARTRESOURCEMONITOR, L"运行Windows资源监视器(&R)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ToolsMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_SHUTDOWNWSLPROCESSES, L"T&erminate WSL processes", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(ToolsMenu, PhCreateEMenuItem(0, ID_TOOLS_SHUTDOWNWSLPROCESSES, L"中止WSL进程(&e)", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(ToolsMenu, PhCreateEMenuSeparator(), ULONG_MAX);
 
-    menuItem = PhCreateEMenuItem(0, 0, L"&Permissions", NULL, NULL);
+    menuItem = PhCreateEMenuItem(0, 0, L"权限(&P)", NULL, NULL);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_TOOLS_PWR_PERMISSIONS, L"Current Power Scheme", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_TOOLS_SCM_PERMISSIONS, L"Service Control Manager", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menuItem, PhCreateEMenuItem(0, ID_TOOLS_RDP_PERMISSIONS, L"Terminal Server Listener", NULL, NULL), ULONG_MAX);
@@ -3588,7 +3595,7 @@ PPH_EMENU PhpCreateUsersMenu(
     PhUiCreateSessionMenu(UsersMenu);
 
     PhInsertEMenuItem(UsersMenu, PhCreateEMenuSeparator(), ULONG_MAX);
-    PhInsertEMenuItem(UsersMenu, PhCreateEMenuItem(PhGetOwnTokenAttributes().Elevated ? 0 : PH_EMENU_DISABLED, ID_TOOLS_USER_LIST, L"User list...", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(UsersMenu, PhCreateEMenuItem(PhGetOwnTokenAttributes().Elevated ? 0 : PH_EMENU_DISABLED, ID_TOOLS_USER_LIST, L"用户列表...", NULL, NULL), ULONG_MAX);
 
     return UsersMenu;
 }
@@ -3603,10 +3610,10 @@ PPH_EMENU PhpCreateHelpMenu(
     _In_ PPH_EMENU HelpMenu
     )
 {
-    PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_LOG, L"&Log\bCtrl+L", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_LOG, L"日志(&L)\bCtrl+L", NULL, NULL), ULONG_MAX);
     //PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_DONATE, L"&Donate", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_DEBUGCONSOLE, L"Debu&g console", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_ABOUT, L"&About", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_DEBUGCONSOLE, L"Debug控制台(&G)", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(HelpMenu, PhCreateEMenuItem(0, ID_HELP_ABOUT, L"关于(&A)", NULL, NULL), ULONG_MAX);
 
     return HelpMenu;
 }
@@ -3640,31 +3647,31 @@ PPH_EMENU PhpCreateMainMenu(
             PPH_EMENU_ITEM menuItem;
             menu->Flags |= PH_EMENU_MAINMENU;
 
-            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_SYSTEM, L"&System", NULL, NULL);
+            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_SYSTEM, L"系统(&S)", NULL, NULL);
             // Insert an empty menuitem so we're able to delay load the submenu. (dmex)
             PhInsertEMenuItem(menuItem, PhCreateEMenuItemEmpty(), ULONG_MAX);
             PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
             //PhInsertEMenuItem(menu, PhpCreateSystemMenu(menuItem, TRUE), ULONG_MAX);
 
-            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_VIEW, L"&View", NULL, NULL);
+            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_VIEW, L"界面(&V)", NULL, NULL);
             // Insert an empty menuitem so we're able to delay load the submenu. (dmex)
             PhInsertEMenuItem(menuItem, PhCreateEMenuItemEmpty(), ULONG_MAX);
             PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
             //PhInsertEMenuItem(menu, PhpCreateViewMenu(menuItem), ULONG_MAX);
 
-            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_TOOLS, L"&Tools", NULL, NULL);
+            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_TOOLS, L"工具(&T)", NULL, NULL);
             // Insert an empty menuitem so we're able to delay load the submenu. (dmex)
             PhInsertEMenuItem(menuItem, PhCreateEMenuItemEmpty(), ULONG_MAX);
             PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
             //PhInsertEMenuItem(menu, PhpCreateToolsMenu(menuItem), ULONG_MAX);
 
-            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_USERS, L"&Users", NULL, NULL);
+            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_USERS, L"用户(&U)", NULL, NULL);
             // Insert an empty menuitem so we're able to delay load the submenu. (dmex)
             PhInsertEMenuItem(menuItem, PhCreateEMenuItemEmpty(), ULONG_MAX);
             PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
             //PhInsertEMenuItem(menu, PhpCreateUsersMenu(menuItem, TRUE), ULONG_MAX);
 
-            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_HELP, L"&Help", NULL, NULL);
+            menuItem = PhCreateEMenuItem(PH_EMENU_MAINMENU, PH_MENU_ITEM_LOCATION_HELP, L"帮助(&H)", NULL, NULL);
             // Insert an empty menuitem so we're able to delay load the submenu. (dmex)
             PhInsertEMenuItem(menuItem, PhCreateEMenuItemEmpty(), ULONG_MAX);
             PhInsertEMenuItem(menu, menuItem, ULONG_MAX);
@@ -4119,7 +4126,7 @@ PPH_EMENU PhpCreateIconMenu(
 
     menu = PhCreateEMenu();
     PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_ICON_SHOWHIDEPROCESSHACKER, L"&Show/Hide System Informer", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_ICON_SYSTEMINFORMATION, L"System &information", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_ICON_SYSTEMINFORMATION, L"系统信息概览（&I）", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, PhpCreateNotificationMenu(), ULONG_MAX);
     PhInsertEMenuItem(menu, PhpCreateNotificationSettingsMenu(), ULONG_MAX);
     PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_PROCESSES_DUMMY, L"&Processes", NULL, NULL), ULONG_MAX);

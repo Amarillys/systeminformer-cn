@@ -134,7 +134,7 @@ PPH_STRINGREF rgUdtKind[] =
 
 PPH_STRINGREF rgDataKind[] =
 {
-    SREF(L"Unknown"),
+    SREF(L"未知"),
     SREF(L"Local"),
     SREF(L"Static Local"),
     SREF(L"Param"),

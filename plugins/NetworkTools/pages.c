@@ -13,7 +13,7 @@
 
 TASKDIALOG_BUTTON RestartButtonArray[] =
 {
-    { IDYES, L"Restart" }
+    { IDYES, L"重启" }
 };
 
 TASKDIALOG_BUTTON DownloadButtonArray[] =

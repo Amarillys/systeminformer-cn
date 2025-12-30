@@ -768,11 +768,11 @@ INT_PTR CALLBACK PhpProcessStatisticsDlgProc(
 
             PhSetListViewStyle(statisticsContext->ListViewHandle, TRUE, TRUE);
             PhSetControlTheme(statisticsContext->ListViewHandle, L"explorer");
-            PhAddIListViewColumn(statisticsContext->ListView, 0, 0, 0, LVCFMT_LEFT, 135, L"Property");
-            PhAddIListViewColumn(statisticsContext->ListView, 1, 1, 1, LVCFMT_LEFT, 150, L"Value");
-            PhAddIListViewColumn(statisticsContext->ListView, 2, 2, 2, LVCFMT_LEFT, 150, L"Min");
-            PhAddIListViewColumn(statisticsContext->ListView, 3, 3, 3, LVCFMT_LEFT, 150, L"Max");
-            PhAddIListViewColumn(statisticsContext->ListView, 4, 4, 4, LVCFMT_LEFT, 150, L"Difference");
+            PhAddIListViewColumn(statisticsContext->ListView, 0, 0, 0, LVCFMT_LEFT, 135, L"属性");
+            PhAddIListViewColumn(statisticsContext->ListView, 1, 1, 1, LVCFMT_LEFT, 150, L"值");
+            PhAddIListViewColumn(statisticsContext->ListView, 2, 2, 2, LVCFMT_LEFT, 150, L"最小");
+            PhAddIListViewColumn(statisticsContext->ListView, 3, 3, 3, LVCFMT_LEFT, 150, L"最大");
+            PhAddIListViewColumn(statisticsContext->ListView, 4, 4, 4, LVCFMT_LEFT, 150, L"差值");
             PhSetExtendedListView(statisticsContext->ListViewHandle);
             ExtendedListView_SetTriState(statisticsContext->ListViewHandle, TRUE);
             PhpUpdateStatisticsAddListViewGroups(statisticsContext);

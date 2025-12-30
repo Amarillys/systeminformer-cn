@@ -131,30 +131,30 @@ static VOID PhpUpdateMemoryListInfo(
     }
     else
     {
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTZEROED_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTFREE_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTMODIFIED_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTMODIFIEDNOWRITE_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTMODIFIEDPAGEFILE_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTBAD_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY0_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY1_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY2_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY3_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY4_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY5_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY6_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY7_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED0_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED1_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED2_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED3_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED4_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED5_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED6_V, L"Unknown");
-        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED7_V, L"Unknown");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTZEROED_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTFREE_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTMODIFIED_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTMODIFIEDNOWRITE_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTMODIFIEDPAGEFILE_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTBAD_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY0_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY1_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY2_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY3_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY4_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY5_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY6_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTSTANDBY7_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED0_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED1_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED2_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED3_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED4_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED5_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED6_V, L"未知");
+        PhSetDialogItemText(hwndDlg, IDC_ZLISTREPURPOSED7_V, L"未知");
     }
 }
 
@@ -656,16 +656,16 @@ VOID PhShowMemoryListCommand(
     PPH_EMENU_ITEM selectedItem;
 
     menu = PhCreateEMenu();
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 0, L"&Combine memory pages", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 1, L"Empty &compression cache", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 2, L"Empty system &file cache", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 3, L"Empty &registry cache", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 4, L"Empty &working sets", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 5, L"Empty &modified page list", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 6, L"Empty &modified file cache", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 7, L"Empty &standby list", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 8, L"Empty &priority 0 standby list", NULL, NULL), ULONG_MAX);
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, RTL_NUMBER_OF(PhMemoryListCommands), L"Empty &all", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 0, L"清理组合页面", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 1, L"清理压缩缓存", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 2, L"清理系统文件缓存", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 3, L"清理注册表缓存", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 4, L"清理工作集", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 5, L"清理修改的页面文件", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 6, L"清理文件修改缓存", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 7, L"清理待机(&s)对象", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, 8, L"清理低优先级(&p)对象", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, RTL_NUMBER_OF(PhMemoryListCommands), L"全部清理(&a)", NULL, NULL), ULONG_MAX);
 
     if (ShowTopAlign)
     {

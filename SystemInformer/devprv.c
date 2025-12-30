@@ -3497,7 +3497,7 @@ VOID NTAPI PhpDevPropFillUInt32Flags(
         PH_DEVICE_FLAG(DN_BAD_PARTIAL, L"Bad partial"),
         PH_DEVICE_FLAG(DN_NT_ENUMERATOR, L"NT enumerator"),
         PH_DEVICE_FLAG(DN_NT_DRIVER, L"NT driver"),
-        PH_DEVICE_FLAG(DN_DEVICE_DISCONNECTED, L"Disconnected"),
+        PH_DEVICE_FLAG(DN_DEVICE_DISCONNECTED, L"已断开"),
         PH_DEVICE_FLAG(DN_ARM_WAKEUP, L"Wakeup device"),
         PH_DEVICE_FLAG(DN_APM_ENUMERATOR, L"Advanced power enumerator"),
         PH_DEVICE_FLAG(DN_APM_DRIVER, L"Advanced power aware"),

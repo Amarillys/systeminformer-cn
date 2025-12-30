@@ -50,16 +50,16 @@ typedef struct _GPU_DETAILS_CONTEXT
 VOID EtpGpuDetailsAddListViewItemGroups(
     _In_ IListView* ListViewClass)
 {
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_PHYSICALLOCTION, L"Physical Location", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_DRIVERDATE, L"Driver Date", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_DRIVERVERSION, L"Driver Version", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_WDDMVERSION, L"WDDM Version", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_VENDORID, L"Vendor ID", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_DEVICEID, L"Device ID", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_TOTALMEMORY, L"Total Memory", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_RESERVEDMEMORY, L"Reserved Memory", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_GPUFREQUENCY, L"GPU Frequency", NULL);
-    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_GPUMAXFREQUENCY, L"Max GPU Frequency", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_PHYSICALLOCTION, L"物理位置", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_DRIVERDATE, L"驱动程序发布日期", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_DRIVERVERSION, L"驱动版本", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_WDDMVERSION, L"WDDM版本", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_VENDORID, L"容器ID", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_DEVICEID, L"设备ID", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_TOTALMEMORY, L"显存", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_RESERVEDMEMORY, L"保留显存", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_GPUFREQUENCY, L"核心频率", NULL);
+    PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_GPUMAXFREQUENCY, L"最大核心频率", NULL);
     PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_MEMORYFREQUENCY, L"Memory Frequency", NULL);
     PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_MEMORYBANDWIDTH, L"Memory Bandwidth", NULL);
     PhAddIListViewItem(ListViewClass, GPUADAPTER_DETAILS_INDEX_PCIEBANDWIDTH, L"PCIE Bandwidth", NULL);
@@ -414,8 +414,8 @@ INT_PTR CALLBACK GraphicsDeviceDetailsDlgProc(
 
             PhSetListViewStyle(context->ListViewHandle, FALSE, TRUE);
             PhSetControlTheme(context->ListViewHandle, L"explorer");
-            PhAddIListViewColumn(context->ListViewClass, 0, 0, 0, LVCFMT_LEFT, 230, L"Property");
-            PhAddIListViewColumn(context->ListViewClass, 1, 1, 1, LVCFMT_LEFT, 200, L"Value");
+            PhAddIListViewColumn(context->ListViewClass, 0, 0, 0, LVCFMT_LEFT, 230, L"属性");
+            PhAddIListViewColumn(context->ListViewClass, 1, 1, 1, LVCFMT_LEFT, 200, L"值");
             PhSetExtendedListView(context->ListViewHandle);
 
             PhInitializeLayoutManager(&context->LayoutManager, hwndDlg);

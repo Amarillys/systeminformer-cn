@@ -162,13 +162,13 @@ VOID EtEnumerateNamedPipeDirectory(
                 switch (pipeLocalInfo.NamedPipeState)
                 {
                 case FILE_PIPE_DISCONNECTED_STATE:
-                    PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 9, L"Disconnected");
+                    PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 9, L"已断开");
                     break;
                 case FILE_PIPE_LISTENING_STATE:
                     PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 9, L"Listening");
                     break;
                 case FILE_PIPE_CONNECTED_STATE:
-                    PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 9, L"Connected");
+                    PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 9, L"已连接");
                     break;
                 case FILE_PIPE_CLOSING_STATE:
                     PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 9, L"Closing");
@@ -324,13 +324,13 @@ VOID EtAddNamedPipeHandleToListView(
         switch (pipeLocalInfo.NamedPipeState)
         {
             case FILE_PIPE_DISCONNECTED_STATE:
-                PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 11, L"Disconnected");
+                PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 11, L"已断开");
                 break;
             case FILE_PIPE_LISTENING_STATE:
                 PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 11, L"Listening");
                 break;
             case FILE_PIPE_CONNECTED_STATE:
-                PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 11, L"Connected");
+                PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 11, L"已连接");
                 break;
             case FILE_PIPE_CLOSING_STATE:
                 PhSetListViewSubItem(Context->ListViewWndHandle, lvItemIndex, 11, L"Closing");

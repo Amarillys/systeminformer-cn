@@ -95,43 +95,43 @@ VOID DeviceInitializeGeneralPageGroups(
     )
 {
     ListView_EnableGroupView(ListViewHandle, TRUE);
-    PhAddListViewGroup(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, L"General");
-    PhAddListViewGroup(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, L"Class");
+    PhAddListViewGroup(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, L"常规");
+    PhAddListViewGroup(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, L"类型");
 
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DESCRIPTION, L"Description", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_INSTALLED, L"Installed", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_FIRST_INSTALLED, L"First installed", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LAST_ARRIVAL, L"Last arrival", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LAST_REMOVAL, L"Last removal", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PROBLEM_CODE, L"Problem code", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PROBLEM_DESCRIPTION, L"Problem description", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PROBLEM_STATUS, L"Problem status", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER, L"Driver", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_PROVIDER, L"Driver provider", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_DESCRIPTION, L"Driver description", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_DATE, L"Driver date", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_VERSION, L"Driver version", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_INF, L"Driver INF", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_INF_SECTION, L"Driver INF section", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_SERVICE, L"Service", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_SECURITY_DESCRIPTOR, L"Security descriptor", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_ENUMERATOR, L"Enumerator", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PDO_NAME, L"PDO name", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_INSTANCEID, L"Instance ID", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PARENT_INSTANCEID, L"Parent instance ID", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LOCATION_INFO, L"Location info", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LOCATION_PATHS, L"Location paths", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_MATCHING_ID, L"Matching ID", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_HARDWARE_IDS, L"Hardware IDs", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DESCRIPTION, L"描述", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_INSTALLED, L"已安装", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_FIRST_INSTALLED, L"首次安装日期", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LAST_ARRIVAL, L"上一次启用", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LAST_REMOVAL, L"上一次移除", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PROBLEM_CODE, L"故障代码", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PROBLEM_DESCRIPTION, L"故障描述", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PROBLEM_STATUS, L"故障状态", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER, L"驱动", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_PROVIDER, L"驱动提供商", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_DESCRIPTION, L"驱动描述", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_DATE, L"驱动日期", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_VERSION, L"驱动版本", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_INF, L"驱动文件", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_DRIVER_INF_SECTION, L"驱动文件段落", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_SERVICE, L"服务", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_SECURITY_DESCRIPTOR, L"安全描述符", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_ENUMERATOR, L"枚举器", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PDO_NAME, L"PDO名称", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_INSTANCEID, L"实例ID", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_PARENT_INSTANCEID, L"父实例ID", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LOCATION_INFO, L"地址信息", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_LOCATION_PATHS, L"地址路径", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_MATCHING_ID, L"匹配ID", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_GENERAL, DEVICE_PROPERTIES_INDEX_HARDWARE_IDS, L"硬件ID", NULL);
 
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_NAME, L"Name", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_NAME, L"名称", NULL);
     PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_GUID, L"GUID", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_DEVICE_NAME, L"Device name", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_CLASS_NAME, L"Class name", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_INSTALLER, L"Installer", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_DEFAULT_SERVICE, L"Default service", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_SECURITY_DESCRIPTOR, L"Security descriptor", NULL);
-    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_PROPERTY_PAGE_PROVIDER, L"Property page provider", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_DEVICE_NAME, L"设备名称", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_CLASS_NAME, L"类型", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_INSTALLER, L"安装者", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_DEFAULT_SERVICE, L"默认服务", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_SECURITY_DESCRIPTOR, L"安全描述符", NULL);
+    PhAddListViewGroupItem(ListViewHandle, DEVICE_PROPERTIES_CATEGORY_CLASS, DEVICE_PROPERTIES_INDEX_CLASS_PROPERTY_PAGE_PROVIDER, L"属性页面提供者", NULL);
 }
 
 VOID DeviceInitializeGenealPageItems(
@@ -267,7 +267,7 @@ INT_PTR CALLBACK DevicePropGeneralDlgProc(
             PhSetListViewStyle(context->GeneralListViewHandle, FALSE, TRUE);
             PhSetControlTheme(context->GeneralListViewHandle, L"explorer");
             PhAddListViewColumn(context->GeneralListViewHandle, 0, 0, 0, LVCFMT_LEFT, 180, L"Name");
-            PhAddListViewColumn(context->GeneralListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"Value");
+            PhAddListViewColumn(context->GeneralListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"值");
             PhSetExtendedListView(context->GeneralListViewHandle);
             PhLoadListViewColumnsFromSetting(SETTING_NAME_DEVICE_GENERAL_COLUMNS, context->GeneralListViewHandle);
             DeviceSetImageList(context->GeneralListViewHandle, context);
@@ -384,10 +384,10 @@ INT_PTR CALLBACK DevicePropGeneralDlgProc(
                 break;
 
             menu = PhCreateEMenu();
-            PhInsertEMenuItem(menu, enable = PhCreateEMenuItem(0, 0, L"Enable", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, disable = PhCreateEMenuItem(0, 1, L"Disable", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, restart = PhCreateEMenuItem(0, 2, L"Restart", NULL, NULL), ULONG_MAX);
-            PhInsertEMenuItem(menu, uninstall = PhCreateEMenuItem(0, 3, L"Uninstall", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, enable = PhCreateEMenuItem(0, 0, L"启用", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, disable = PhCreateEMenuItem(0, 1, L"禁用", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, restart = PhCreateEMenuItem(0, 2, L"重启", NULL, NULL), ULONG_MAX);
+            PhInsertEMenuItem(menu, uninstall = PhCreateEMenuItem(0, 3, L"卸载", NULL, NULL), ULONG_MAX);
 
             if (!PhGetOwnTokenAttributes().Elevated)
             {
@@ -678,7 +678,7 @@ INT_PTR CALLBACK DevicePropPropertiesDlgProc(
             PhSetListViewStyle(context->PropsListViewHandle, FALSE, TRUE);
             PhSetControlTheme(context->PropsListViewHandle, L"explorer");
             PhAddListViewColumn(context->PropsListViewHandle, 0, 0, 0, LVCFMT_LEFT, 160, L"Name");
-            PhAddListViewColumn(context->PropsListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"Value");
+            PhAddListViewColumn(context->PropsListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"值");
             PhSetExtendedListView(context->PropsListViewHandle);
             PhLoadListViewColumnsFromSetting(SETTING_NAME_DEVICE_PROPERTIES_COLUMNS, context->PropsListViewHandle);
             DeviceSetImageList(context->PropsListViewHandle, context);
@@ -852,7 +852,7 @@ INT_PTR CALLBACK DevicePropInterfacesDlgProc(
             PhSetListViewStyle(context->InterfacesListViewHandle, FALSE, TRUE);
             PhSetControlTheme(context->InterfacesListViewHandle, L"explorer");
             PhAddListViewColumn(context->InterfacesListViewHandle, 0, 0, 0, LVCFMT_LEFT, 160, L"Name");
-            PhAddListViewColumn(context->InterfacesListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"Value");
+            PhAddListViewColumn(context->InterfacesListViewHandle, 1, 1, 1, LVCFMT_LEFT, 300, L"值");
             PhSetExtendedListView(context->InterfacesListViewHandle);
             PhLoadListViewColumnsFromSetting(SETTING_NAME_DEVICE_INTERFACES_COLUMNS, context->InterfacesListViewHandle);
             DeviceSetImageList(context->InterfacesListViewHandle, context);

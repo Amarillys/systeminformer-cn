@@ -26,7 +26,7 @@
 static CONST PH_KEY_VALUE_PAIR MemoryFormFactors[] =
 {
     SIP(L"Other", SMBIOS_MEMORY_DEVICE_FORM_FACTOR_OTHER),
-    SIP(L"Unknown", SMBIOS_MEMORY_DEVICE_FORM_FACTOR_UNKNOWN),
+    SIP(L"未知", SMBIOS_MEMORY_DEVICE_FORM_FACTOR_UNKNOWN),
     SIP(L"SIMM", SMBIOS_MEMORY_DEVICE_FORM_FACTOR_SIMM),
     SIP(L"SIP", SMBIOS_MEMORY_DEVICE_FORM_FACTOR_SIP),
     SIP(L"Chip", SMBIOS_MEMORY_DEVICE_FORM_FACTOR_CHIP),
@@ -47,7 +47,7 @@ static CONST PH_KEY_VALUE_PAIR MemoryFormFactors[] =
 static CONST PH_KEY_VALUE_PAIR MemoryTypes[] =
 {
     SIP(L"Other", SMBIOS_MEMORY_DEVICE_TYPE_OTHER),
-    SIP(L"Unknown", SMBIOS_MEMORY_DEVICE_TYPE_UNKNOWN),
+    SIP(L"未知", SMBIOS_MEMORY_DEVICE_TYPE_UNKNOWN),
     SIP(L"DRAM", SMBIOS_MEMORY_DEVICE_TYPE_DRAM),
     SIP(L"EDRAM", SMBIOS_MEMORY_DEVICE_TYPE_EDRAM),
     SIP(L"VRAM", SMBIOS_MEMORY_DEVICE_TYPE_VRAM),
@@ -84,7 +84,7 @@ static CONST PH_KEY_VALUE_PAIR MemoryTypes[] =
 static CONST PH_KEY_VALUE_PAIR MemoryTechnologies[] =
 {
     SIP(L"Other", SMBIOS_MEMORY_DEVICE_TECHNOLOGY_OTHER),
-    SIP(L"Unknown", SMBIOS_MEMORY_DEVICE_TECHNOLOGY_UNKNOWN),
+    SIP(L"未知", SMBIOS_MEMORY_DEVICE_TECHNOLOGY_UNKNOWN),
     SIP(L"DRAM", SMBIOS_MEMORY_DEVICE_TECHNOLOGY_DRAM),
     SIP(L"NVDIMM-N", SMBIOS_MEMORY_DEVICE_TECHNOLOGY_NVDIMM_N),
     SIP(L"NVDIMM-F", SMBIOS_MEMORY_DEVICE_TECHNOLOGY_NVDIMM_F),
@@ -393,7 +393,7 @@ BOOLEAN PhSipMemorySectionCallback(
                 usedPages = totalPages - PhPerfInformation.AvailablePages;
             }
 
-            drawPanel->Title = PhCreateString(L"Memory");
+            drawPanel->Title = PhCreateString(L"内存");
 
             // %.0f%%\n%s / %s
             PhInitFormatF(&format[0], ((FLOAT)usedPages / (FLOAT)totalPages) * 100, 0);
@@ -511,12 +511,12 @@ INT_PTR CALLBACK PhSipMemoryDialogProc(
             if (NT_SUCCESS(PhGetPhysicallyInstalledSystemMemory(&InstalledMemory, &ReservedMemory)))
             {
                 PhSetWindowText(totalPhysicalLabel, PhaConcatStrings2(
-                    PhaFormatSize(InstalledMemory, ULONG_MAX)->Buffer, L" installed")->Buffer);
+                    PhaFormatSize(InstalledMemory, ULONG_MAX)->Buffer, L" ")->Buffer);
             }
             else
             {
                 PhSetWindowText(totalPhysicalLabel, PhaConcatStrings2(
-                    PhaFormatSize(UInt32x32To64(PhSystemBasicInformation.NumberOfPhysicalPages, PAGE_SIZE), ULONG_MAX)->Buffer, L" total")->Buffer);
+                    PhaFormatSize(UInt32x32To64(PhSystemBasicInformation.NumberOfPhysicalPages, PAGE_SIZE), ULONG_MAX)->Buffer, L" 总共")->Buffer);
             }
 
             MemoryPanel = PhCreateDialog(PhInstanceHandle, MAKEINTRESOURCE(IDD_SYSINFO_MEMPANEL), hwndDlg, PhSipMemoryPanelDialogProc, NULL);
@@ -696,30 +696,6 @@ VOID PhSipLayoutMemoryGraphs(
 
     deferHandle = DeferWindowPos(
         deferHandle,
-        GetDlgItem(MemoryDialog, IDC_COMMIT_L),
-        NULL,
-        marginRect.left,
-        y,
-        0,
-        0,
-        SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOZORDER
-        );
-    y += labelRect.bottom + MemorySection->Parameters->MemoryPadding;
-
-    deferHandle = DeferWindowPos(
-        deferHandle,
-        CommitGraphHandle,
-        NULL,
-        marginRect.left,
-        y,
-        graphWidth,
-        graphHeight,
-        SWP_NOACTIVATE | SWP_NOZORDER
-        );
-    y += graphHeight + MemorySection->Parameters->MemoryPadding;
-
-    deferHandle = DeferWindowPos(
-        deferHandle,
         GetDlgItem(MemoryDialog, IDC_PHYSICAL_L),
         NULL,
         marginRect.left,
@@ -733,6 +709,30 @@ VOID PhSipLayoutMemoryGraphs(
     deferHandle = DeferWindowPos(
         deferHandle,
         PhysicalGraphHandle,
+        NULL,
+        marginRect.left,
+        y,
+        graphWidth,
+        graphHeight,
+        SWP_NOACTIVATE | SWP_NOZORDER
+        );
+    y += graphHeight + MemorySection->Parameters->MemoryPadding;
+
+    deferHandle = DeferWindowPos(
+        deferHandle,
+        GetDlgItem(MemoryDialog, IDC_COMMIT_L),
+        NULL,
+        marginRect.left,
+        y,
+        0,
+        0,
+        SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOZORDER
+        );
+    y += labelRect.bottom + MemorySection->Parameters->MemoryPadding;
+
+    deferHandle = DeferWindowPos(
+        deferHandle,
+        CommitGraphHandle,
         NULL,
         marginRect.left,
         y,
@@ -926,7 +926,7 @@ BOOLEAN NTAPI PhSipNotifyPhysicalGraph(
                     {
                         PH_FORMAT format[13];
 
-                        PhInitFormatS(&format[0], L"Physical memory: ");
+                        PhInitFormatS(&format[0], L"物理内存: ");
                         PhInitFormatSize(&format[1], UInt32x32To64(usedPages, PAGE_SIZE));
                         PhInitFormatC(&format[2], L'\n');
                         PhInitFormatS(&format[3], L"Compressed memory: ");

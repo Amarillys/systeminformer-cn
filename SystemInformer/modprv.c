@@ -1025,7 +1025,7 @@ UpdateExit:
 
 static CONST PH_KEY_VALUE_PAIR PhModuleTypePairs[] =
 {
-    SIP(SREF(L"Unknown"), PH_MODULE_TYPE_UNKNOWN),
+    SIP(SREF(L"未知"), PH_MODULE_TYPE_UNKNOWN),
     SIP(SREF(L"DLL"), PH_MODULE_TYPE_MODULE),
     SIP(SREF(L"Mapped file"), PH_MODULE_TYPE_MAPPED_FILE),
     SIP(SREF(L"WOW64 DLL"), PH_MODULE_TYPE_WOW64_MODULE),
@@ -1066,7 +1066,7 @@ static CONST PH_KEY_VALUE_PAIR PhModuleLoadReasonTypePairs[] =
     SIP(SREF(L"Enclave primary"), LoadReasonEnclavePrimary),
     SIP(SREF(L"Enclave dependency"), LoadReasonEnclaveDependency),
     SIP(SREF(L"Patch image"), LoadReasonPatchImage),
-    SIP(SREF(L"Unknown"), LoadReasonUnknown),
+    SIP(SREF(L"未知"), LoadReasonUnknown),
 };
 
 PCPH_STRINGREF PhGetModuleLoadReasonTypeName(
@@ -1090,7 +1090,7 @@ PCPH_STRINGREF PhGetModuleLoadReasonTypeName(
 
 static CONST PH_KEY_VALUE_PAIR PhModuleEnclaveTypePairs[] =
 {
-    SIP(SREF(L"Unknown"), 0),
+    SIP(SREF(L"未知"), 0),
     SIP(SREF(L"SGX"), ENCLAVE_TYPE_SGX),
     SIP(SREF(L"SGX2"), ENCLAVE_TYPE_SGX2),
     SIP(SREF(L"VBS"), ENCLAVE_TYPE_VBS)

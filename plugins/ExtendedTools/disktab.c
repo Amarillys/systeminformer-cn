@@ -19,8 +19,8 @@ static BOOLEAN DiskTreeNewCreated = FALSE;
 static HWND DiskTreeNewHandle = NULL;
 static ULONG DiskTreeNewSortColumn = 0;
 static PH_SORT_ORDER DiskTreeNewSortOrder = NoSortOrder;
-static CONST PH_STRINGREF DiskPageText = PH_STRINGREF_INIT(L"Disk");
-static CONST PH_STRINGREF DiskBannerText = PH_STRINGREF_INIT(L"Search Disk");
+static CONST PH_STRINGREF DiskPageText = PH_STRINGREF_INIT(L"硬盘");
+static CONST PH_STRINGREF DiskBannerText = PH_STRINGREF_INIT(L"搜索");
 static CONST PH_STRINGREF DiskTreeEmptyText = PH_STRINGREF_INIT(L"Disk monitoring requires System Informer to be restarted with administrative privileges.");
 static PPH_STRING DiskTreeErrorText = NULL;
 
@@ -272,15 +272,15 @@ VOID EtInitializeDiskTreeList(
     TreeNew_SetImageList(WindowHandle, PhGetProcessSmallImageList());
 
     // Default columns
-    PhAddTreeNewColumn(WindowHandle, ETDSTNC_NAME, TRUE, L"Name", 100, PH_ALIGN_LEFT, 0, 0);
+    PhAddTreeNewColumn(WindowHandle, ETDSTNC_NAME, TRUE, L"名称", 100, PH_ALIGN_LEFT, 0, 0);
     PhAddTreeNewColumn(WindowHandle, ETDSTNC_PID, TRUE, L"PID", 50, PH_ALIGN_RIGHT, 1, DT_RIGHT);
-    PhAddTreeNewColumn(WindowHandle, ETDSTNC_FILE, TRUE, L"File", 400, PH_ALIGN_LEFT, 2, DT_PATH_ELLIPSIS);
-    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_READRATEAVERAGE, TRUE, L"Read rate average", 70, PH_ALIGN_RIGHT, 3, DT_RIGHT, TRUE);
-    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_WRITERATEAVERAGE, TRUE, L"Write rate average", 70, PH_ALIGN_RIGHT, 4, DT_RIGHT, TRUE);
-    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_TOTALRATEAVERAGE, TRUE, L"Total rate average", 70, PH_ALIGN_RIGHT, 5, DT_RIGHT, TRUE);
-    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_IOPRIORITY, TRUE, L"I/O priority", 70, PH_ALIGN_LEFT, 6, 0, TRUE);
-    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_RESPONSETIME, TRUE, L"Response time (ms)", 70, PH_ALIGN_RIGHT, 7, 0, TRUE);
-    PhAddTreeNewColumn(WindowHandle, ETDSTNC_ORIGINALNAME, FALSE, L"Original name", 200, PH_ALIGN_LEFT, ULONG_MAX, DT_PATH_ELLIPSIS);
+    PhAddTreeNewColumn(WindowHandle, ETDSTNC_FILE, TRUE, L"文件", 400, PH_ALIGN_LEFT, 2, DT_PATH_ELLIPSIS);
+    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_READRATEAVERAGE, TRUE, L"平均读取速率", 70, PH_ALIGN_RIGHT, 3, DT_RIGHT, TRUE);
+    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_WRITERATEAVERAGE, TRUE, L"平均写入速率", 70, PH_ALIGN_RIGHT, 4, DT_RIGHT, TRUE);
+    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_TOTALRATEAVERAGE, TRUE, L"总速率", 70, PH_ALIGN_RIGHT, 5, DT_RIGHT, TRUE);
+    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_IOPRIORITY, TRUE, L"I/O 优先级", 70, PH_ALIGN_LEFT, 6, 0, TRUE);
+    PhAddTreeNewColumnEx(WindowHandle, ETDSTNC_RESPONSETIME, TRUE, L"反应时间 (ms)", 70, PH_ALIGN_RIGHT, 7, 0, TRUE);
+    PhAddTreeNewColumn(WindowHandle, ETDSTNC_ORIGINALNAME, FALSE, L"原始文件路径", 200, PH_ALIGN_LEFT, ULONG_MAX, DT_PATH_ELLIPSIS);
 
     PhInitializeTreeNewFilterSupport(&FilterSupport, WindowHandle, DiskNodeList);
 
@@ -665,22 +665,22 @@ BOOLEAN NTAPI EtpDiskTreeNewCallback(
                 switch (diskItem->IoPriority)
                 {
                 case IoPriorityVeryLow:
-                    PhInitializeStringRef(&getCellText->Text, L"Very Low");
+                    PhInitializeStringRef(&getCellText->Text, L"非常低");
                     break;
                 case IoPriorityLow:
-                    PhInitializeStringRef(&getCellText->Text, L"Low");
+                    PhInitializeStringRef(&getCellText->Text, L"低");
                     break;
                 case IoPriorityNormal:
-                    PhInitializeStringRef(&getCellText->Text, L"Normal");
+                    PhInitializeStringRef(&getCellText->Text, L"普通");
                     break;
                 case IoPriorityHigh:
-                    PhInitializeStringRef(&getCellText->Text, L"High");
+                    PhInitializeStringRef(&getCellText->Text, L"高");
                     break;
                 case IoPriorityCritical:
-                    PhInitializeStringRef(&getCellText->Text, L"Critical");
+                    PhInitializeStringRef(&getCellText->Text, L"关键");
                     break;
                 default:
-                    PhInitializeStringRef(&getCellText->Text, L"Unknown");
+                    PhInitializeStringRef(&getCellText->Text, L"未知");
                     break;
                 }
                 break;
@@ -1158,7 +1158,7 @@ VOID EtShowDiskContextMenu(
         PPH_EMENU_ITEM item;
 
         menu = PhCreateEMenu();
-        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_DISK_GOTOPROCESS, L"&Go to process", NULL, NULL), ULONG_MAX);
+        PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_DISK_GOTOPROCESS, L"跳转到进程(&G)", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_DISK_OPENFILELOCATION, L"Open &file location\bEnter", NULL, NULL), ULONG_MAX);
         PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);

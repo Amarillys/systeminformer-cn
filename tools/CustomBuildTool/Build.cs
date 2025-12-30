@@ -1664,7 +1664,7 @@ namespace CustomBuildTool
                         return false;
                     }
 
-                    if (!httpResult.Equals("OK", StringComparison.OrdinalIgnoreCase))
+                    if (!httpResult.Equals("确定", StringComparison.OrdinalIgnoreCase))
                     {
                         Program.PrintColorMessage($"[UpdateBuildWebService-SF] {httpResult}", ConsoleColor.Red);
                         return false;

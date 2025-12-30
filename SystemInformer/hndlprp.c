@@ -1668,7 +1668,7 @@ VOID PhpUpdateHandleGeneral(
 
         if (NT_SUCCESS(status))
         {
-            PCWSTR sectionType = L"Unknown";
+            PCWSTR sectionType = L"未知";
             PPH_STRING sectionSize = NULL;
 
             if (FlagOn(basicInfo.AllocationAttributes, SEC_COMMIT))
@@ -1689,7 +1689,7 @@ VOID PhpUpdateHandleGeneral(
 
             PhSetHandleListViewItem(Context, PH_HANDLE_GENERAL_INDEX_SECTIONFILE, 1, PhGetStringOrDefault(fileName, L"N/A"));
             PhSetHandleListViewItem(Context, PH_HANDLE_GENERAL_INDEX_SECTIONTYPE, 1, sectionType);
-            PhSetHandleListViewItem(Context, PH_HANDLE_GENERAL_INDEX_SECTIONSIZE, 1, PhGetStringOrDefault(sectionSize, L"Unknown"));
+            PhSetHandleListViewItem(Context, PH_HANDLE_GENERAL_INDEX_SECTIONSIZE, 1, PhGetStringOrDefault(sectionSize, L"未知"));
         }
     }
     else if (PhEqualString2(Context->HandleItem->TypeName, L"Mutant", TRUE))
@@ -1886,7 +1886,7 @@ VOID PhpUpdateHandleGeneral(
             PPH_STRING exitcode;
 
             message = PhGetStatusMessage(exitStatus, 0);
-            exitcode = PhFormatString(L"0x%x (%s)", exitStatus, PhGetStringOrDefault(message, L"Unknown"));
+            exitcode = PhFormatString(L"0x%x (%s)", exitStatus, PhGetStringOrDefault(message, L"未知"));
             PhSetHandleListViewItem(Context, PH_HANDLE_GENERAL_INDEX_PROCESSTHREADEXITCODE, 1, PhGetStringOrEmpty(exitcode));
             PhClearReference(&exitcode);
             PhClearReference(&message);
@@ -2011,7 +2011,7 @@ VOID PhpUpdateHandleGeneral(
             PPH_STRING exitcode;
 
             message = PhGetStatusMessage(exitStatus, 0);
-            exitcode = PhFormatString(L"0x%x (%s)", exitStatus, PhGetStringOrDefault(message, L"Unknown"));
+            exitcode = PhFormatString(L"0x%x (%s)", exitStatus, PhGetStringOrDefault(message, L"未知"));
             PhSetHandleListViewItem(Context, PH_HANDLE_GENERAL_INDEX_PROCESSTHREADEXITCODE, 1, PhGetStringOrEmpty(exitcode));
             PhClearReference(&exitcode);
             PhClearReference(&message);
@@ -2080,7 +2080,7 @@ INT_PTR CALLBACK PhpHandleGeneralDlgProc(
             PhSetListViewStyle(context->ListViewHandle, FALSE, TRUE);
             PhSetControlTheme(context->ListViewHandle, L"explorer");
             PhAddListViewColumn(context->ListViewHandle, 0, 0, 0, LVCFMT_LEFT, 120, L"Name");
-            PhAddListViewColumn(context->ListViewHandle, 1, 1, 1, LVCFMT_LEFT, 250, L"Value");
+            PhAddListViewColumn(context->ListViewHandle, 1, 1, 1, LVCFMT_LEFT, 250, L"值");
             PhSetExtendedListView(context->ListViewHandle);
 
             PhInitializeLayoutManager(&context->LayoutManager, hwndDlg);

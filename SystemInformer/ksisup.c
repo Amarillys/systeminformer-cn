@@ -436,7 +436,7 @@ PPH_STRING PhpGetKsiMessage(
         );
 
     PhAppendStringBuilder2(&stringBuilder, L"Windows Kernel ");
-    PhAppendStringBuilder2(&stringBuilder, PhGetStringOrDefault(kernelVersion, L"Unknown"));
+    PhAppendStringBuilder2(&stringBuilder, PhGetStringOrDefault(kernelVersion, L"未知"));
     PhAppendStringBuilder2(&stringBuilder, L"\r\n");
     PhAppendStringBuilder(&stringBuilder, &versionString->sr);
     PhAppendStringBuilder2(&stringBuilder, L"\r\n");

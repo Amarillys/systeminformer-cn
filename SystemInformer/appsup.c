@@ -89,7 +89,7 @@ BOOLEAN PhIsProcessBackground(
 
 static CONST PH_KEY_VALUE_PAIR ProcessPriorityClassTypePairs[] =
 {
-    SIP(SREF(L"Unknown"), PROCESS_PRIORITY_CLASS_UNKNOWN),
+    SIP(SREF(L"未知"), PROCESS_PRIORITY_CLASS_UNKNOWN),
     SIP(SREF(L"Idle"), PROCESS_PRIORITY_CLASS_IDLE),
     SIP(SREF(L"Normal"), PROCESS_PRIORITY_CLASS_NORMAL),
     SIP(SREF(L"High"), PROCESS_PRIORITY_CLASS_HIGH),
@@ -134,7 +134,7 @@ PCPH_STRINGREF PhGetProcessPriorityClassString(
     //    return L"Idle";
     //case PROCESS_PRIORITY_CLASS_UNKNOWN:
     //default:
-    //    return L"Unknown";
+    //    return L"未知";
     //}
 }
 
@@ -193,7 +193,7 @@ PPH_STRING PhGetProcessProtectionString(
         }
         else
         {
-            PhInitFormatS(&format[count++], L"Unknown");
+            PhInitFormatS(&format[count++], L"未知");
         }
 
         if (PhIndexStringSiKeyValuePairs(
@@ -210,7 +210,7 @@ PPH_STRING PhGetProcessProtectionString(
         else
         {
             PhInitFormatS(&format[count++], L" (");
-            PhInitFormatS(&format[count++], L"Unknown");
+            PhInitFormatS(&format[count++], L"未知");
             PhInitFormatS(&format[count++], L")");
         }
 
@@ -1438,7 +1438,7 @@ PCWSTR PhGetPhReleaseChannelString(
         return L"Developer";
     }
 
-    return L"Unknown";
+    return L"未知";
 }
 
 VOID PhWritePhTextHeader(
@@ -2093,9 +2093,9 @@ BOOLEAN PhInsertCopyCellEMenuItem(
 
     PhInitializeStringRefLongHint(&columnText, Column->Text);
     escapedText = PhEscapeStringForMenuPrefix(&columnText);
-    PhInitFormatS(&format[0], L"Copy \""); // Copy \"%s\"
+    PhInitFormatS(&format[0], L"复制 "); // Copy \"%s\"
     PhInitFormatSR(&format[1], escapedText->sr);
-    PhInitFormatS(&format[2], L"\"");
+    PhInitFormatS(&format[2], L"");
     menuItemText = PhFormat(format, RTL_NUMBER_OF(format), 0);
     PhDereferenceObject(escapedText);
 

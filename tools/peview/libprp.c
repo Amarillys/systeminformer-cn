@@ -125,7 +125,7 @@ INT_PTR CALLBACK PvpLibExportsDlgProc(
                         type = L"Const";
                         break;
                     default:
-                        type = L"Unknown";
+                        type = L"未知";
                         break;
                     }
 
@@ -146,7 +146,7 @@ INT_PTR CALLBACK PvpLibExportsDlgProc(
                         type = L"Name, undecorate";
                         break;
                     default:
-                        type = L"Unknown";
+                        type = L"未知";
                         break;
                     }
 

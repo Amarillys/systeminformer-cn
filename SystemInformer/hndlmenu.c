@@ -121,8 +121,8 @@ VOID PhShowHandleObjectProperties1(
     if (PhIsNullOrEmptyString(Info->TypeName))
         return;
 
-    if (PhEqualString2(Info->TypeName, L"File", TRUE) || PhEqualString2(Info->TypeName, L"DLL", TRUE) ||
-        PhEqualString2(Info->TypeName, L"Mapped file", TRUE) || PhEqualString2(Info->TypeName, L"Mapped image", TRUE))
+    if (PhEqualString2(Info->TypeName, L"文件", TRUE) || PhEqualString2(Info->TypeName, L"DLL", TRUE) ||
+        PhEqualString2(Info->TypeName, L"映射文件", TRUE) || PhEqualString2(Info->TypeName, L"Mapped image", TRUE))
     {
         if (Info->BestObjectName)
         {
@@ -135,16 +135,16 @@ VOID PhShowHandleObjectProperties1(
                 );
         }
         else
-            PhShowError2(hWnd, L"Unable to open the file location.", L"%s", L"The object is unnamed.");
+            PhShowError2(hWnd, L"无法找到文件锁在位置。", L"%s", L"The object is unnamed.");
     }
     else if (PhEqualString2(Info->TypeName, L"Key", TRUE))
     {
         if (Info->BestObjectName)
             PhShellOpenKey2(hWnd, Info->BestObjectName);
         else
-            PhShowError2(hWnd, L"Unable to open key.", L"%s", L"The object is unnamed.");
+            PhShowError2(hWnd, L"无法打开注册表.", L"%s", L"The object is unnamed.");
     }
-    else if (PhEqualString2(Info->TypeName, L"Process", TRUE))
+    else if (PhEqualString2(Info->TypeName, L"进程", TRUE))
     {
         HANDLE processHandle;
         HANDLE processId;

@@ -320,7 +320,7 @@ VOID ShowUninstallPageDialog(
 {
     TASKDIALOG_BUTTON buttonArray[] =
     {
-        { IDYES, L"Uninstall" }
+        { IDYES, L"卸载" }
     };
     TASKDIALOGCONFIG config;
 

@@ -127,7 +127,7 @@ VOID PhInitializeNetworkTreeList(
     TreeNew_SetImageList(TreeNewHandle, PhProcessSmallImageList);
 
     // Default columns
-    PhAddTreeNewColumn(TreeNewHandle, PHNETLC_PROCESS, TRUE, L"Name", 100, PH_ALIGN_LEFT, 0, 0);
+    PhAddTreeNewColumn(TreeNewHandle, PHNETLC_PROCESS, TRUE, L"名称", 100, PH_ALIGN_CENTER, 0, 0);
     PhAddTreeNewColumn(TreeNewHandle, PHNETLC_PID, TRUE, L"PID", 50, PH_ALIGN_RIGHT, 1, DT_RIGHT);
     PhAddTreeNewColumn(TreeNewHandle, PHNETLC_LOCALADDRESS, TRUE, L"Local address", 120, PH_ALIGN_LEFT, 2, 0);
     PhAddTreeNewColumn(TreeNewHandle, PHNETLC_LOCALPORT, TRUE, L"Local port", 50, PH_ALIGN_RIGHT, 3, DT_RIGHT);
@@ -664,7 +664,7 @@ BOOLEAN NTAPI PhpNetworkTreeNewCallback(
                     if (networkItem->LocalHostnameResolved)
                         getCellText->Text = PhGetStringRef(networkItem->LocalHostString);
                     else
-                        PhInitializeStringRef(&getCellText->Text, L"Resolving....");
+                        PhInitializeStringRef(&getCellText->Text, L"解析中....");
                 }
                 break;
             case PHNETLC_LOCALPORT:
@@ -682,7 +682,7 @@ BOOLEAN NTAPI PhpNetworkTreeNewCallback(
                     if (networkItem->RemoteHostnameResolved)
                         getCellText->Text = PhGetStringRef(networkItem->RemoteHostString);
                     else
-                        PhInitializeStringRef(&getCellText->Text, L"Resolving....");
+                        PhInitializeStringRef(&getCellText->Text, L"解析中....");
                 }
                 break;
             case PHNETLC_REMOTEPORT:
@@ -725,7 +725,7 @@ BOOLEAN NTAPI PhpNetworkTreeNewCallback(
                     {
                         if (networkItem->State)
                         {
-                            PhInitializeStringRef(&getCellText->Text, L"Connected");
+                            PhInitializeStringRef(&getCellText->Text, L"已连接");
                         }
                         else
                         {

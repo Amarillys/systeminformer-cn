@@ -328,28 +328,28 @@ VOID NTAPI ShowOptionsCallback(
     PPH_PLUGIN_OPTIONS_POINTERS optionsEntry = (PPH_PLUGIN_OPTIONS_POINTERS)Parameter;
 
     optionsEntry->CreateSection(
-        L"Notifications - Processes",
+        L"通知 - 进程",
         NtCurrentImageBase(),
         MAKEINTRESOURCE(IDD_PROCESSES),
         ProcessesDlgProc,
         NULL
         );
     optionsEntry->CreateSection(
-        L"Notifications - Services",
+        L"通知 - 服务",
         NtCurrentImageBase(),
         MAKEINTRESOURCE(IDD_SERVICES),
         ServicesDlgProc,
         NULL
         );
     optionsEntry->CreateSection(
-        L"Notifications - Devices",
+        L"通知 - 设备",
         NtCurrentImageBase(),
         MAKEINTRESOURCE(IDD_DEVICES),
         DevicesDlgProc,
         NULL
         );
     optionsEntry->CreateSection(
-        L"Notifications - Logging",
+        L"通知 - 日志",
         NtCurrentImageBase(),
         MAKEINTRESOURCE(IDD_LOGGING),
         LoggingDlgProc,

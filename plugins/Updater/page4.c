@@ -74,13 +74,13 @@ VOID ShowProgressDialog(
         switch (Context->Channel)
         {
         case PhReleaseChannel:
-            channelName = L" release";
+            channelName = L" 正式版";
             break;
         //case PhPreviewChannel:
         //    channelName = L" release";
         //    break;
         case PhCanaryChannel:
-            channelName = L" canary";
+            channelName = L" 测试版";
             break;
         //case PhDeveloperChannel:
         //    channelName = L" developer";
@@ -90,14 +90,14 @@ VOID ShowProgressDialog(
             break;
         }
 
-        config.pszMainInstruction = PhaFormatString(L"Downloading%s channel %s...", channelName, PhGetStringOrEmpty(Context->Version))->Buffer;
+        config.pszMainInstruction = PhaFormatString(L"下载%s 频道 %s...", channelName, PhGetStringOrEmpty(Context->Version))->Buffer;
     }
     else
     {
-        config.pszMainInstruction = PhaFormatString(L"Downloading update %s...", PhGetStringOrEmpty(Context->Version))->Buffer;
+        config.pszMainInstruction = PhaFormatString(L"下载更新 %s...", PhGetStringOrEmpty(Context->Version))->Buffer;
     }
 
-    config.pszContent = L"Downloaded: ~ of ~ (0%)\r\nSpeed: ~ KB/s";
+    config.pszContent = L"已下载: ~ of ~ (0%)\r\n速度: ~ KB/s";
 
     PhTaskDialogNavigatePage(Context->DialogHandle, &config);
 }

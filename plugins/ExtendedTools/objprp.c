@@ -875,10 +875,10 @@ PCWSTR EtMapSessionConnectState(
     static CONST PH_KEY_VALUE_PAIR EtpConnectStatePairs[] =
     {
         SIP(L"Active", State_Active),
-        SIP(L"Connected", State_Connected),
+        SIP(L"已连接", State_Connected),
         SIP(L"ConnectQuery", State_ConnectQuery),
         SIP(L"Shadow", State_Shadow),
-        SIP(L"Disconnected", State_Disconnected),
+        SIP(L"已断开", State_Disconnected),
         SIP(L"Idle", State_Idle),
         SIP(L"Listen", State_Listen),
         SIP(L"Reset", State_Reset),
@@ -1854,17 +1854,17 @@ INT_PTR CALLBACK EtpObjHandlesPageDlgProc(
                     PhGetListViewContextMenuPoint(context->ListViewHandle, &point);
 
                 menu = PhCreateEMenu();
-                PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_CLOSEHANDLE, L"C&lose\bDel", NULL, NULL), ULONG_MAX);
+                PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_CLOSEHANDLE, L"关闭(&l)\bDel", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, protectedMenuItem = PhCreateEMenuItem(0, IDC_HANDLE_PROTECTED, L"&Protected", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, inheritMenuItem = PhCreateEMenuItem(0, IDC_HANDLE_INHERIT, L"&Inherit", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_GOTOPROCESS, L"&Go to process\bCtrl+Enter", NULL, NULL), ULONG_MAX);
+                PhInsertEMenuItem(menu, gotoMenuItem = PhCreateEMenuItem(0, IDC_GOTOPROCESS, L"跳转到进程(&G)\bCtrl+Enter", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                PhInsertEMenuItem(menu, secMenuItem = PhCreateEMenuItem(0, IDC_SECURITY, L"&Security", NULL, NULL), ULONG_MAX);
+                PhInsertEMenuItem(menu, secMenuItem = PhCreateEMenuItem(0, IDC_SECURITY, L"安全(&S)", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                PhInsertEMenuItem(menu, propMenuItem = PhCreateEMenuItem(0, IDC_PROPERTIES, L"Prope&rties\bEnter", NULL, NULL), ULONG_MAX);
+                PhInsertEMenuItem(menu, propMenuItem = PhCreateEMenuItem(0, IDC_PROPERTIES, L"属性(&r)\bEnter", NULL, NULL), ULONG_MAX);
                 PhInsertEMenuItem(menu, PhCreateEMenuSeparator(), ULONG_MAX);
-                PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"&Copy\bCtrl+C", NULL, NULL), ULONG_MAX);
+                PhInsertEMenuItem(menu, PhCreateEMenuItem(0, IDC_COPY, L"复制(&C)\bCtrl+C", NULL, NULL), ULONG_MAX);
                 PhInsertCopyListViewEMenuItem(menu, IDC_COPY, context->ListViewHandle);
                 PhSetFlagsEMenuItem(menu, IDC_PROPERTIES, PH_EMENU_DEFAULT, PH_EMENU_DEFAULT);
 

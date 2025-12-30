@@ -15,85 +15,85 @@
 #include <svcsup.h>
 #include <mapldr.h>
 
-static CONST PH_STRINGREF PhpServiceUnknownString = PH_STRINGREF_INIT(L"Unknown");
+static CONST PH_STRINGREF PhpServiceUnknownString = PH_STRINGREF_INIT(L"未知");
 
 static CONST PH_KEY_VALUE_PAIR PhpServiceStatePairs[] =
 {
-    SIP(SREF(L"Unknown"), 0),
-    SIP(SREF(L"Stopped"), SERVICE_STOPPED),
-    SIP(SREF(L"Start pending"), SERVICE_START_PENDING),
-    SIP(SREF(L"Stop pending"), SERVICE_STOP_PENDING),
-    SIP(SREF(L"Running"), SERVICE_RUNNING),
-    SIP(SREF(L"Continue pending"), SERVICE_CONTINUE_PENDING),
-    SIP(SREF(L"Pause pending"), SERVICE_PAUSE_PENDING),
-    SIP(SREF(L"Paused"), SERVICE_PAUSED)
+    SIP(SREF(L"未知"), 0),
+    SIP(SREF(L"中止"), SERVICE_STOPPED),
+    SIP(SREF(L"执行请求"), SERVICE_START_PENDING),
+    SIP(SREF(L"停止请求"), SERVICE_STOP_PENDING),
+    SIP(SREF(L"运行中"), SERVICE_RUNNING),
+    SIP(SREF(L"继续请求"), SERVICE_CONTINUE_PENDING),
+    SIP(SREF(L"暂停请求"), SERVICE_PAUSE_PENDING),
+    SIP(SREF(L"暂停"), SERVICE_PAUSED)
 };
 
 static CONST PH_KEY_VALUE_PAIR PhpServiceTypePairs[] =
 {
-    SIP(SREF(L"Unknown"), 0),
-    SIP(SREF(L"Driver"), SERVICE_KERNEL_DRIVER),
-    SIP(SREF(L"FS driver"), SERVICE_FILE_SYSTEM_DRIVER),
-    SIP(SREF(L"Own process"), SERVICE_WIN32_OWN_PROCESS),
-    SIP(SREF(L"Share process"), SERVICE_WIN32_SHARE_PROCESS),
-    SIP(SREF(L"Own interactive process"), SERVICE_WIN32_OWN_PROCESS | SERVICE_INTERACTIVE_PROCESS),
-    SIP(SREF(L"Share interactive process"), SERVICE_WIN32_SHARE_PROCESS | SERVICE_INTERACTIVE_PROCESS),
-    SIP(SREF(L"User own process"), SERVICE_USER_OWN_PROCESS),
-    SIP(SREF(L"User own process (instance)"), SERVICE_USER_OWN_PROCESS | SERVICE_USERSERVICE_INSTANCE),
-    SIP(SREF(L"User share process"), SERVICE_USER_SHARE_PROCESS),
-    SIP(SREF(L"User share process (instance)"), SERVICE_USER_SHARE_PROCESS | SERVICE_USERSERVICE_INSTANCE),
-    SIP(SREF(L"Package own process"), SERVICE_PKG_SERVICE | SERVICE_WIN32_OWN_PROCESS),
-    SIP(SREF(L"Package share process"), SERVICE_PKG_SERVICE | SERVICE_WIN32_SHARE_PROCESS),
+    SIP(SREF(L"未知"), 0),
+    SIP(SREF(L"驱动"), SERVICE_KERNEL_DRIVER),
+    SIP(SREF(L"文件系统驱动"), SERVICE_FILE_SYSTEM_DRIVER),
+    SIP(SREF(L"专用进程"), SERVICE_WIN32_OWN_PROCESS),
+    SIP(SREF(L"共享进程"), SERVICE_WIN32_SHARE_PROCESS),
+    SIP(SREF(L"专用交互进程"), SERVICE_WIN32_OWN_PROCESS | SERVICE_INTERACTIVE_PROCESS),
+    SIP(SREF(L"共享交互进程"), SERVICE_WIN32_SHARE_PROCESS | SERVICE_INTERACTIVE_PROCESS),
+    SIP(SREF(L"用户专用进程"), SERVICE_USER_OWN_PROCESS),
+    SIP(SREF(L"用户专用进程 (实例)"), SERVICE_USER_OWN_PROCESS | SERVICE_USERSERVICE_INSTANCE),
+    SIP(SREF(L"用户共享进程"), SERVICE_USER_SHARE_PROCESS),
+    SIP(SREF(L"用户共享进程 (实例)"), SERVICE_USER_SHARE_PROCESS | SERVICE_USERSERVICE_INSTANCE),
+    SIP(SREF(L"应用程序专用进程"), SERVICE_PKG_SERVICE | SERVICE_WIN32_OWN_PROCESS),
+    SIP(SREF(L"应用程序共享进程"), SERVICE_PKG_SERVICE | SERVICE_WIN32_SHARE_PROCESS),
 };
 
 static CONST PH_KEY_VALUE_PAIR PhpServiceStartTypePairs[] =
 {
-    SIP(SREF(L"Boot start"), SERVICE_BOOT_START),
-    SIP(SREF(L"System start"), SERVICE_SYSTEM_START),
-    SIP(SREF(L"Auto start"), SERVICE_AUTO_START),
-    SIP(SREF(L"Demand start"), SERVICE_DEMAND_START),
-    SIP(SREF(L"Disabled"), SERVICE_DISABLED),
+    SIP(SREF(L"开机启动"), SERVICE_BOOT_START),
+    SIP(SREF(L"系统启动"), SERVICE_SYSTEM_START),
+    SIP(SREF(L"自动启动"), SERVICE_AUTO_START),
+    SIP(SREF(L"按需启动"), SERVICE_DEMAND_START),
+    SIP(SREF(L"禁止"), SERVICE_DISABLED),
 };
 
 static CONST PH_KEY_VALUE_PAIR PhpServiceErrorControlPairs[] =
 {
-    SIP(SREF(L"Ignore"), SERVICE_ERROR_IGNORE),
-    SIP(SREF(L"Normal"), SERVICE_ERROR_NORMAL),
-    SIP(SREF(L"Severe"), SERVICE_ERROR_SEVERE),
-    SIP(SREF(L"Critical"), SERVICE_ERROR_CRITICAL)
+    SIP(SREF(L"忽略"), SERVICE_ERROR_IGNORE),
+    SIP(SREF(L"正常"), SERVICE_ERROR_NORMAL),
+    SIP(SREF(L"严重"), SERVICE_ERROR_SEVERE),
+    SIP(SREF(L"关键"), SERVICE_ERROR_CRITICAL)
 };
 
 CONST PPH_STRINGREF PhServiceTypeStrings[] =
 {
-    SREF(L"Driver"),
-    SREF(L"FS driver"),
-    SREF(L"Own process"),
-    SREF(L"Share process"),
-    SREF(L"Own interactive process"),
-    SREF(L"Share interactive process"),
-    SREF(L"User own process"),
-    SREF(L"User own process (instance)"),
-    SREF(L"User share process"),
-    SREF(L"User share process (instance)"),
-    SREF(L"Package own process"),
-    SREF(L"Package share process"),
+    SREF(L"驱动"),
+    SREF(L"文件系统驱动"),
+    SREF(L"专用进程"),
+    SREF(L"共享进程"),
+    SREF(L"专用交互进程"),
+    SREF(L"共享交互进程"),
+    SREF(L"用户专用进程"),
+    SREF(L"用户专用进程 (实例)"),
+    SREF(L"用户共享进程"),
+    SREF(L"用户共享进程 (实例)"),
+    SREF(L"应用程序专用进程"),
+    SREF(L"应用程序共享进程"),
 };
 
 CONST PPH_STRINGREF PhServiceStartTypeStrings[5] =
 {
-    SREF(L"Disabled"),
-    SREF(L"Boot start"),
-    SREF(L"System start"),
-    SREF(L"Auto start"),
-    SREF(L"Demand start"),
+    SREF(L"禁止"),
+    SREF(L"开机启动"),
+    SREF(L"系统启动"),
+    SREF(L"自动启动"),
+    SREF(L"按需启动"),
 };
 
 CONST PPH_STRINGREF PhServiceErrorControlStrings[4] =
 {
-    SREF(L"Ignore"),
-    SREF(L"Normal"),
-    SREF(L"Severe"),
-    SREF(L"Critical"),
+    SREF(L"忽略"),
+    SREF(L"正常"),
+    SREF(L"严重"),
+    SREF(L"关键"),
 };
 
 /**
@@ -1155,7 +1155,7 @@ BOOLEAN PhGetServiceTriggerInfo(
  * Retrieves the service state.
  *
  * \param ServiceState The service state value (e.g., SERVICE_RUNNING, SERVICE_STOPPED).
- * \return A pointer to a string reference describing the service state, or "Unknown" if not found.
+ * \return A pointer to a string reference describing the service state, or "未知" if not found.
  */
 PCPH_STRINGREF PhGetServiceStateString(
     _In_ ULONG ServiceState
@@ -1180,7 +1180,7 @@ PCPH_STRINGREF PhGetServiceStateString(
  * Retrieves the display type.
  *
  * \param ServiceType The service type value (e.g., SERVICE_WIN32_OWN_PROCESS).
- * \return A pointer to a string reference describing the service type, or "Unknown" if not found.
+ * \return A pointer to a string reference describing the service type, or "未知" if not found.
  */
 PCPH_STRINGREF PhGetServiceTypeString(
     _In_ ULONG ServiceType
@@ -1228,7 +1228,7 @@ ULONG PhGetServiceTypeInteger(
  * Retrieves the display string for a service start type value.
  *
  * \param ServiceStartType The service start type value (e.g., SERVICE_AUTO_START).
- * \return A pointer to a string reference describing the start type, or "Unknown" if not found.
+ * \return A pointer to a string reference describing the start type, or "未知" if not found.
  */
 PCPH_STRINGREF PhGetServiceStartTypeString(
     _In_ ULONG ServiceStartType
@@ -1276,7 +1276,7 @@ ULONG PhGetServiceStartTypeInteger(
  * Retrieves the display string for a service error control value.
  *
  * \param ServiceErrorControl The service error control value (e.g., SERVICE_ERROR_NORMAL).
- * \return A pointer to a string reference describing the error control, or "Unknown" if not found.
+ * \return A pointer to a string reference describing the error control, or "未知" if not found.
  */
 PCPH_STRINGREF PhGetServiceErrorControlString(
     _In_ ULONG ServiceErrorControl

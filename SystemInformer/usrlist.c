@@ -405,7 +405,7 @@ VOID PhpUserListRefresh(
         LsaFreeReturnBuffer_I(logonSessionList);
     }
 
-    PhInitFormatS(&format[0], L"Number of users: ");
+    PhInitFormatS(&format[0], L"用户数量: ");
     PhInitFormatU(&format[1], Context->NodeList->Count);
     message = PhFormat(format, 2, 10);
 
