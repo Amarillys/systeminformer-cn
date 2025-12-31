@@ -197,7 +197,7 @@ namespace CustomBuildTool
             }
             catch (Exception e)
             {
-                Program.PrintColorMessage($"Unable to create signature file {Path.GetFileName(FileName)}: {e.Message}", ConsoleColor.Yellow);
+                Program.PrintColorMessage($"Unable to create signature file {Path.GetFileName(FileName)}: {e}", ConsoleColor.Yellow);
                 return false;
             }
 
@@ -301,7 +301,7 @@ namespace CustomBuildTool
         {
             using (var blobStream = new MemoryStream(Bytes))
             {
-                return Decrypt(blobStream, Secret, GetSalt(Salt));
+                return Decrypt(blobStream, Secret, Salt);
             }
         }
 
@@ -316,7 +316,7 @@ namespace CustomBuildTool
         {
             using (var blobStream = new MemoryStream(Bytes))
             {
-                return Encrypt(blobStream, Secret, GetSalt(Salt));
+                return Encrypt(blobStream, Secret, Salt);
             }
         }
 
@@ -328,29 +328,20 @@ namespace CustomBuildTool
         /// <returns>An AES instance configured with the derived key and IV.</returns>
         private static Aes GetRijndael(string Secret, string Salt)
         {
-            byte[] saltBytes = Convert.FromBase64String(Salt);
-
-            byte[] key = Rfc2898DeriveBytes.Pbkdf2(
+            using (Rfc2898DeriveBytes rfc2898DeriveBytes = new Rfc2898DeriveBytes(
                 Secret,
-                saltBytes,
+                Convert.FromBase64String(GetSalt(Salt)),
                 10000,
-                HashAlgorithmName.SHA512,
-                32
-                );
+                HashAlgorithmName.SHA512
+                ))
+            {
+                Aes rijndael = Aes.Create();
 
-            byte[] iv = Rfc2898DeriveBytes.Pbkdf2(
-                Secret,
-                saltBytes,
-                10000,
-                HashAlgorithmName.SHA512,
-                16
-                );
+                rijndael.Key = rfc2898DeriveBytes.GetBytes(32);
+                rijndael.IV = rfc2898DeriveBytes.GetBytes(16);
 
-            Aes rijndael = Aes.Create();
-            rijndael.Key = key;
-            rijndael.IV = iv;
-
-            return rijndael;
+                return rijndael;
+            }
         }
 
         /// <summary>

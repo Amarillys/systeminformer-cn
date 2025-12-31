@@ -1638,7 +1638,19 @@ NtUmsThreadYield(
 
 typedef struct _WNF_STATE_NAME
 {
-    ULONG Data[2];
+    union
+    {   
+        ULONGLONG Value;
+        ULONG Data[2];
+        struct
+        {
+            ULONG64 Version : 4;
+            ULONG64 NameLifetime : 2;
+            ULONG64 DataScope : 4;
+            ULONG64 PermanentData : 1;
+            ULONG64 Unique : 53;
+        };
+    };
 } WNF_STATE_NAME, *PWNF_STATE_NAME;
 
 typedef const WNF_STATE_NAME *PCWNF_STATE_NAME;
@@ -5943,9 +5955,10 @@ typedef struct _SYSTEM_CODEINTEGRITYVERIFICATION_INFORMATION
 // rev
 typedef struct _SYSTEM_HYPERVISOR_USER_SHARED_DATA
 {
-    ULONGLONG TimeUpdateLock; // QpcSystemTimeIncrement?
-    volatile ULONGLONG QpcMultiplier;
-    volatile ULONGLONG QpcBias; // HvlGetQpcBias
+    volatile ULONG TimeUpdateLock;
+    ULONG Reserved0;
+    ULONGLONG QpcMultiplier;
+    ULONGLONG QpcBias;
 } SYSTEM_HYPERVISOR_USER_SHARED_DATA, *PSYSTEM_HYPERVISOR_USER_SHARED_DATA;
 
 // private
@@ -7446,7 +7459,49 @@ typedef struct _KUSER_SHARED_DATA
             // read the counter directly (bypassing the system call) and flags.
             //
 
-            volatile UCHAR QpcBypassEnabled;
+            union
+            {
+
+                volatile UCHAR QpcBypassEnabled;
+
+                struct
+                {
+                    //
+                    // QPC may bypass the syscall and use a fast user-mode path.
+                    //
+                    volatile UCHAR BypassAllowed : 1;
+
+                    //
+                    // Hypervisor-assisted QPC conversion.
+                    //
+                    volatile UCHAR HypervisorAssist : 1;
+
+                    //
+                    // Reserved/unused
+                    //
+                    volatile UCHAR Reserved_2_3 : 2;
+
+                    //
+                    // MFENCE before RDTSC in relevant paths.
+                    //
+                    volatile UCHAR UseMfence : 1;
+
+                    //
+                    // LFENCE before RDTSC in relevant paths.
+                    //
+                    volatile UCHAR UseLfence : 1;
+
+                    //
+                    // Reserved/unused
+                    //
+                    volatile UCHAR Reserved_6 : 1;
+
+                    //
+                    // RDTSCP instead of RDTSC in the fast path.
+                    //
+                    volatile UCHAR UseRdtscp : 1;
+                };
+            };
 
             //
             // Reserved, leave as zero for backward compatibility. Was shift
